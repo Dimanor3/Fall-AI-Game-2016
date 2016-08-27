@@ -3,12 +3,13 @@ using System.Collections;
 
 [RequireComponent(typeof(PlayerMotor))]
 [RequireComponent(typeof(Stamina))]
+[RequireComponent(typeof(Health))]
 public class PlayerController : MonoBehaviour {
 
 	// Player movement
+	private PlayerMotor motor;					// Used to move the player
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float runSpeed;
-	private PlayerMotor motor;					// Used to move the player
 
 	// Player stamina
 	private Stamina stamina;
@@ -16,11 +17,16 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] private float useStaminaSpeed;
 	[SerializeField] private float staminaRegen;
 
+	// Player health
+	private Health health;
+	[SerializeField] private int hp;
+
 	// Use this for initialization
 	void Start () {
 		// Initialize access to all outside classes
 		motor = GetComponent<PlayerMotor> ();
 		stamina = GetComponent<Stamina> ();
+		health = GetComponent<Health> ();
 
 		// Initialize all required variables
 		moveSpeed = 5f;
@@ -28,11 +34,15 @@ public class PlayerController : MonoBehaviour {
 		playerStamina = 1000f;
 		useStaminaSpeed = 5f;
 		staminaRegen = 2f;
+		hp = 100;
 
 		// Initialize stamina properties
 		stamina.setStamina(playerStamina);
 		stamina.setStaminaLoss (useStaminaSpeed);
 		stamina.setStaminaRegen (staminaRegen);
+
+		// Initialize health properties
+		health.setHP (hp);
 	}
 
 	// Update is called once per frame

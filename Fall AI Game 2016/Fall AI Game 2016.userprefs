@@ -2,25 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main Character\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="85" Column="18" />
+      <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="68" Column="33" />
       <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Main Character\Stamina.cs" Line="25" Column="27" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Fall AI Game 2016" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Main Character" expanded="True">
-                  <Node name="PlayerController.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
