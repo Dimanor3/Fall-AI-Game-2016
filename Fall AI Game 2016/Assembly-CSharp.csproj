@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Main Character\Player Controller.cs" />
-     <Compile Include="Assets\Scripts\Main Character\Player Motor.cs" />
+     <Compile Include="Assets\Scripts\Main Character\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Main Character\PlayerMotor.cs" />
+     <Compile Include="Assets\Scripts\Main Character\Stamina.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
