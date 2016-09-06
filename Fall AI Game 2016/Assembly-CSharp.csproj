@@ -45,7 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Environmental\Door.cs" />
+     <Compile Include="Assets\Scripts\Environmental\Door\horizontalDoor.cs" />
+     <Compile Include="Assets\Scripts\Environmental\Door\verticalDoor.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\Main Character\Stamina.cs" />
