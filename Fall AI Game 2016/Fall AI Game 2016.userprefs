@@ -1,17 +1,41 @@
+<<<<<<< HEAD
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Guard\GuardMotor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environment\Door.cs">
     <Files>
       <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environmental\Door\horizontalDoor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environmental\Door\verticalDoor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Guard\GuardController.cs" Line="7" Column="19" />
-      <File FileName="Assets\Scripts\Guard\GuardMotor.cs" Line="9" Column="19" />
+      <File FileName="Assets\Scripts\Environment\Door.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+=======
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environmental\Door\verticalDoor.cs">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Guard\GuardMotor.cs">
+>>>>>>> 31bf30616d9db950384368c9a4a078d0596aace0
+    <Files>
+      <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Environmental\Door\horizontalDoor.cs" Line="1" Column="1" />
+<<<<<<< HEAD
+      <File FileName="Assets\Scripts\Environmental\Door\verticalDoor.cs" Line="25" Column="3" />
+=======
+      <File FileName="Assets\Scripts\Environmental\Door\verticalDoor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Guard\GuardController.cs" Line="7" Column="19" />
+      <File FileName="Assets\Scripts\Guard\GuardMotor.cs" Line="9" Column="19" />
+>>>>>>> 31bf30616d9db950384368c9a4a078d0596aace0
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+>>>>>>> 133e18adad5b2ff0f07af1178df52c648545a21d
 </Properties>
