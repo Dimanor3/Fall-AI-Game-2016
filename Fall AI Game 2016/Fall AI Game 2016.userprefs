@@ -1,29 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Environmental\Door\horizontalDoor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Guard\GuardMotor.cs">
     <Files>
       <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environmental\Door\horizontalDoor.cs" Line="37" Column="22" />
-      <File FileName="Assets\Scripts\Environmental\Door\verticalDoor.cs" Line="37" Column="22" />
+      <File FileName="Assets\Scripts\Environmental\Door\horizontalDoor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Environmental\Door\verticalDoor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Guard\GuardController.cs" Line="7" Column="19" />
+      <File FileName="Assets\Scripts\Guard\GuardMotor.cs" Line="9" Column="19" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Fall AI Game 2016" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Environmental" expanded="True">
-                  <Node name="Door" expanded="True">
-                    <Node name="horizontalDoor.cs" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
