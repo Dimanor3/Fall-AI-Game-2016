@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour {
 		health = GetComponent<Health> ();
 
 		// Initialize all required variables
-		moveSpeed = 5f;
-		runSpeed = 10f;
+		moveSpeed = 28f;
+		runSpeed = 70f;
 		playerStamina = 1000f;
 		useStaminaSpeed = 5f;
 		staminaRegen = 2f;
