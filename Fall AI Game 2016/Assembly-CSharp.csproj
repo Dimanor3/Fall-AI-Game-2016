@@ -45,12 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Environment\Door.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\horizontalDoor.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\verticalDoor.cs" />
+     <Compile Include="Assets\Scripts\Guard\GuardController.cs" />
+     <Compile Include="Assets\Scripts\Guard\GuardMotor.cs" />
+     <Compile Include="Assets\Scripts\Guard\Pathfinding.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerMotor.cs" />
-     <Compile Include="Assets\Scripts\Main Character\Stamina.cs" />
      <Compile Include="Assets\Scripts\Universal\Health.cs" />
+     <Compile Include="Assets\Scripts\Universal\Stamina.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
