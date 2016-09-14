@@ -104,6 +104,7 @@ GameObject:
   - 114: {fileID: 184559354}
   - 114: {fileID: 184559353}
   - 114: {fileID: 184559352}
+  - 114: {fileID: 184559359}
   m_Layer: 8
   m_Name: Main Character
   m_TagString: Player
@@ -155,6 +156,8 @@ MonoBehaviour:
   useStaminaSpeed: 0
   staminaRegen: 0
   hp: 0
+  hidden: 0
+  hiddingSpotLocation: {x: 0, y: 0}
 --- !u!114 &184559355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +214,21 @@ Transform:
   - {fileID: 211607149}
   - {fileID: 1006385056}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
+--- !u!114 &184559359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184559351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cff28761e40494582b597b3021c521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  hidding: 0
+  enter: 0
 --- !u!1 &211607148
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +406,7 @@ Transform:
   m_Children:
   - {fileID: 1775855065}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1001 &1775855064
 Prefab:
   m_ObjectHideFlags: 0
