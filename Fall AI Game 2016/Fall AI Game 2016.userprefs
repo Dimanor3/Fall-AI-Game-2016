@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main Character\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Buttons\PlayTest.cs">
     <Files>
       <File FileName="Assets\Scripts\Environmental\Hidding\Hidding.cs" Line="20" Column="36" />
       <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="97" Column="35" />
-      <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="48" Column="9" />
+      <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Buttons\PlayTest.cs" Line="8" Column="3" />
+      <File FileName="Assets\Scripts\Buttons\PlayGame.cs" Line="6" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,12 +14,11 @@
           <Node name="Fall AI Game 2016" expanded="True">
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Environmental" expanded="True">
-                  <Node name="Door" expanded="True" />
-                  <Node name="Hidding" expanded="True" />
+                <Node name="Buttons" expanded="True">
+                  <Node name="PlayTest.cs" selected="True" />
                 </Node>
-                <Node name="Main Character" expanded="True">
-                  <Node name="PlayerController.cs" selected="True" />
+                <Node name="Environmental" expanded="True">
+                  <Node name="Hidding" expanded="True" />
                 </Node>
               </Node>
             </Node>
