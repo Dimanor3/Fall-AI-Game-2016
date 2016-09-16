@@ -4,10 +4,11 @@ using System.Collections;
 [RequireComponent(typeof(PlayerMotor))]
 [RequireComponent(typeof(Stamina))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Hidding))]
 public class PlayerController : MonoBehaviour {
 
 	// Player movement
-	private PlayerMotor motor;					// Used to move the player
+	private PlayerMotor motor;												// Used to move the player
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float runSpeed;
 
@@ -21,12 +22,18 @@ public class PlayerController : MonoBehaviour {
 	private Health health;
 	[SerializeField] private int hp;
 
+	// Stuff for hidding the player
+	private Hidding hidding;
+	[SerializeField] private bool hidden = false;							// Checks to see if hte player is currently hidding or not
+	[SerializeField] private Vector2 hiddingSpotLocation = Vector3.zero;	// Holds the hidding spots location so that the player can move there
+
 	// Use this for initialization
 	void Start () {
 		// Initialize access to all outside classes
 		motor = GetComponent<PlayerMotor> ();
 		stamina = GetComponent<Stamina> ();
 		health = GetComponent<Health> ();
+		hidding = GetComponent<Hidding> ();
 
 		// Initialize all required variables
 		moveSpeed = 28f;
@@ -47,29 +54,48 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// Running?
-		float run = Input.GetAxis("Run");
+		// Check to see if the player is hidding or not
+		hidden = hidding.getHidding ();
 
-		// Main Character left right up and down movement
-		float horizontalMovement = Input.GetAxis("Horizontal");
-		float verticalMovement = Input.GetAxis("Vertical");
+		// Set hidden in motor
+		motor.SetHidden (hidden);
 
-		// Calculations for main characters movements
-		Vector2 moveHorizontal = transform.right * horizontalMovement;
-		Vector2 moveVertical = transform.up * verticalMovement;
-		Vector2 movement = (moveHorizontal + moveVertical).normalized;
+		if (!hidden) {
+			// Running?
+			float run = Input.GetAxis ("Run");
 
-		// Set player's movement speed
-		movement *= running(run);
+			// Main Character left right up and down movement
+			float horizontalMovement = Input.GetAxis ("Horizontal");
+			float verticalMovement = Input.GetAxis ("Vertical");
 
-		// Use the player's stamina?
-		useStamina (run, horizontalMovement, verticalMovement);
+			// Calculations for main characters movements
+			Vector2 moveHorizontal = transform.right * horizontalMovement;
+			Vector2 moveVertical = transform.up * verticalMovement;
+			Vector2 movement = (moveHorizontal + moveVertical).normalized;
 
-		// Regen the player's stamina?
-		regenStamina (run, horizontalMovement, verticalMovement);
+			// Set player's movement speed
+			movement *= running (run);
 
-		// Move the player
-		motor.SetMovement (movement);
+			// Use the player's stamina?
+			useStamina (run, horizontalMovement, verticalMovement);
+
+			// Regen the player's stamina?
+			regenStamina (run, horizontalMovement, verticalMovement);
+
+			// Move the player
+			motor.SetMovement (movement);
+		} else {
+			// This is used to move the player into the
+			// hidding spot
+			Vector2 moveToPos = hiddingSpotLocation - (Vector2)transform.position;
+
+			if (moveToPos.magnitude > moveSpeed) {
+				moveToPos.Normalize ();
+				moveToPos *= moveSpeed;
+			}
+
+			motor.SetAIMovement (moveToPos);
+		}
 	}
 
 	// Determines whether or not the player is running or walking
@@ -97,6 +123,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (run == 0 && (hM != 0 || vM != 0)){
 			stamina.halfRegen ();
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D col) {
+		if (col.CompareTag ("Hidding Spot")) {
+			hiddingSpotLocation = col.gameObject.transform.position;
 		}
 	}
 }

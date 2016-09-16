@@ -58,16 +58,13 @@ public class horizontalDoor : MonoBehaviour {
 				openRot = Quaternion.Euler (0f, 0f, -openDoor);
 			}
 
-			// Checks to see if the player can open the door
-			if (enter) {
-				// If the door is open then the next time
-				// the player interacts with it it will
-				// close and vice versa
-				if (open) {
-					open = false;
-				} else {
-					open = true;
-				}
+			// If the door is open then the next time
+			// the player interacts with it it will
+			// close and vice versa
+			if (open) {
+				open = false;
+			} else {
+				open = true;
 			}
 
 			use = true;
@@ -83,14 +80,14 @@ public class horizontalDoor : MonoBehaviour {
 
 	// Is the player in the vicinity of the door?
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Guard") {
+		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = true;
 		}
 	}
 
 	// Has the player left the vicinity of the door?
 	void OnTriggerExit2D (Collider2D col) {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Guard") {
+		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = false;
 		}
 	}

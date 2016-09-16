@@ -45,9 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Environment\Door.cs" />
+     <Compile Include="Assets\Scripts\Buttons\Exit.cs" />
+     <Compile Include="Assets\Scripts\Buttons\PlayGame.cs" />
+     <Compile Include="Assets\Scripts\Buttons\PlayTest.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\horizontalDoor.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\verticalDoor.cs" />
+     <Compile Include="Assets\Scripts\Environmental\Hidding\Hidding.cs" />
      <Compile Include="Assets\Scripts\Guard\GuardController.cs" />
      <Compile Include="Assets\Scripts\Guard\GuardMotor.cs" />
      <Compile Include="Assets\Scripts\Guard\Pathfinding.cs" />

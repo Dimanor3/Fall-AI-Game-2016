@@ -828,6 +828,7 @@ GameObject:
   - 114: {fileID: 1657893673}
   - 114: {fileID: 1657893676}
   - 114: {fileID: 1657893674}
+  - 114: {fileID: 1657893677}
   m_Layer: 8
   m_Name: Main Character
   m_TagString: Player
@@ -898,6 +899,8 @@ MonoBehaviour:
   useStaminaSpeed: 0
   staminaRegen: 0
   hp: 0
+  hidden: 0
+  hiddingSpotLocation: {x: 0, y: 0}
 --- !u!114 &1657893674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,6 +939,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   regenHP: 0
+--- !u!114 &1657893677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1657893669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cff28761e40494582b597b3021c521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  hidding: 0
+  enter: 0
 --- !u!1 &1723538829
 GameObject:
   m_ObjectHideFlags: 0
