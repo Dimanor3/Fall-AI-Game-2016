@@ -2,30 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Buttons\PlayTest.cs">
     <Files>
-      <File FileName="Assets\Scripts\Environmental\Hidding\Hidding.cs" Line="20" Column="36" />
-      <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="97" Column="35" />
+      <File FileName="Assets\Scripts\Environmental\Hidding\Hidding.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main Character\PlayerController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Main Character\PlayerMotor.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Buttons\PlayTest.cs" Line="8" Column="3" />
-      <File FileName="Assets\Scripts\Buttons\PlayGame.cs" Line="6" Column="28" />
+      <File FileName="Assets\Scripts\Buttons\PlayGame.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Fall AI Game 2016" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Buttons" expanded="True">
-                  <Node name="PlayTest.cs" selected="True" />
-                </Node>
-                <Node name="Environmental" expanded="True">
-                  <Node name="Hidding" expanded="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
