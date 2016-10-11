@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Buttons\Exit.cs" />
      <Compile Include="Assets\Scripts\Buttons\PlayGame.cs" />
      <Compile Include="Assets\Scripts\Buttons\PlayTest.cs" />
+     <Compile Include="Assets\Scripts\Environmental\Door\MiniGame.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\horizontalDoor.cs" />
      <Compile Include="Assets\Scripts\Environmental\Door\verticalDoor.cs" />
      <Compile Include="Assets\Scripts\Environmental\Hidding\Hidding.cs" />
