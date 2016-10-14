@@ -55,8 +55,11 @@
      <Compile Include="Assets\Scripts\Guard\GuardController.cs" />
      <Compile Include="Assets\Scripts\Guard\GuardMotor.cs" />
      <Compile Include="Assets\Scripts\Guard\Pathfinding.cs" />
+     <Compile Include="Assets\Scripts\Main Character\CameraController.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Main Character\PlayerMotor.cs" />
+     <Compile Include="Assets\Scripts\Universal\Bullet\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Universal\Bullet\Shoot.cs" />
      <Compile Include="Assets\Scripts\Universal\Health.cs" />
      <Compile Include="Assets\Scripts\Universal\Stamina.cs" />
  <Reference Include="UnityEngine.UI">

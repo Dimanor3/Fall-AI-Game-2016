@@ -115,6 +115,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	// Deals damage towards the player
+	public void dealDamage (int dmg) {
+		health.dmg (dmg);
+	}
+
 	// Checks to see whether or not the player can regen their stamina
 	void regenStamina(float run, float hM, float vM){
 		if (run == 0 && hM == 0 && vM == 0){

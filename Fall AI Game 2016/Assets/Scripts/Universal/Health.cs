@@ -4,17 +4,9 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
 	// Health stuff
-	private int maxHP;
-	[SerializeField] private int hp;
-	[SerializeField] private int regenHP;
-
-	// Use this for initialization
-	void Start () {
-		// Initialize variables
-		maxHP = 0;
-		hp = 0;
-		regenHP = 0;
-	}
+	private int maxHP = 0;
+	[SerializeField] private int hp = 0;
+	[SerializeField] private int regenHP = 0;
 	
 	// Update is called once per frame
 	void Update () {

@@ -52,7 +52,7 @@ public class verticalDoor : MonoBehaviour {
 		if (useValue != 0 && !use && enter) {
 			// Determines the direction the player is facing and sets which way
 			// the door should open
-			if ((hit1.collider != null || hit2.collider != null || hit2.collider != null)) {
+			if ((hit1.collider != null || hit2.collider != null || hit3.collider != null)) {
 				openRot = Quaternion.Euler (0f, 0f, openDoor);
 			} else {
 				openRot = Quaternion.Euler (0f, 0f, -openDoor);
