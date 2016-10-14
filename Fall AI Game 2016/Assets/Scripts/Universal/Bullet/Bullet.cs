@@ -17,9 +17,7 @@ public class Bullet : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col) {
 		// If hit player deal damage
 		if (col.gameObject.tag == "Player") {
-			if (!col.gameObject.GetComponent <PlayerController> ().getHidden()) {
-				col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
-			}
+			col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
 		}
 
 		Destroy (gameObject);							// Destroy once collision occurs
