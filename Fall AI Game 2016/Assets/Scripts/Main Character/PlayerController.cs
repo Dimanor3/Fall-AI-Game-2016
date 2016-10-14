@@ -136,4 +136,8 @@ public class PlayerController : MonoBehaviour {
 			hiddingSpotLocation = col.gameObject.transform.position;
 		}
 	}
+
+	public bool getHidden () {
+		return hidden;
+	}
 }
