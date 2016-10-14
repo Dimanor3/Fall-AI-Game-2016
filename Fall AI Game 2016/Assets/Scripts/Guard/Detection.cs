@@ -10,6 +10,8 @@ public class Detection : MonoBehaviour {
 	[SerializeField] private float rotationSpeed;
 	//[SerializeField] private float rotationTimer;
 	private bool detected;
+	private int timer;
+	private int maxTimer;
 
 	//private Vector2 rotation;
 	private Vector3 direction;
@@ -23,6 +25,8 @@ public class Detection : MonoBehaviour {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody2D> ();
 		rotationSpeed = 0f;
+		timer = 50;
+		maxTimer = 50;
 	}
 
 	// Update is called once per frame
@@ -30,8 +34,17 @@ public class Detection : MonoBehaviour {
 		if (detected) {
 			playerPosition = GameObject.FindWithTag ("Player").transform.position;
 			direction = playerPosition - transform.position;
-			angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-			transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+			angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
+			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+			transform.rotation = Quaternion.Slerp (q, transform.rotation, rotationSpeed * Time.deltaTime);
+		}
+	}
+	
+	void FixedUpdate(){
+		timer--;
+		if(timer <= 0 && detected) {
+			gameObject.GetComponentInChildren <Shoot> ().shoot ();
+			timer = maxTimer;
 		}
 	}
 
