@@ -288,7 +288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 553909442}
+      - m_Target: {fileID: 553909441}
         m_MethodName: PlayTestButton
         m_Mode: 1
         m_Arguments:
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 553909443}
+      - m_Target: {fileID: 553909441}
         m_MethodName: PlayGameButton
         m_Mode: 1
         m_Arguments:
@@ -552,8 +552,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 553909440}
   - 114: {fileID: 553909441}
-  - 114: {fileID: 553909443}
-  - 114: {fileID: 553909442}
   m_Layer: 0
   m_Name: Button Effects
   m_TagString: Untagged
@@ -582,29 +580,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 553909439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5674124766b44d449a45fe16df843fd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &553909442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 553909439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67755418430bd434c87597759f335a9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &553909443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 553909439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d6fb7fc38370f749b0371300f7412d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5df4f7c419c24824eaa6210a528f9292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &712620272
