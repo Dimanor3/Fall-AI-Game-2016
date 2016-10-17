@@ -7,7 +7,7 @@ TagManager:
   - Door
   - Guard
   - Hidding Spot
-  - Lost
+  - WinOrLose
   layers:
   - Default
   - TransparentFX

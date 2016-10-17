@@ -30,8 +30,10 @@ public class PlayerController : MonoBehaviour {
 
     // Player score
     private int score;                                                      // Stores the player's score
-    [SerializeField] private Text playerScore;
-    private GameObject[] lostObjects;                                       // Holds an array of GameObjects that are meant to be shown when the player losses.
+    [SerializeField] private Text playerScore, playerWinState;
+    private GameObject[] winOrLoseObjects;                                  // Holds an array of GameObjects that are meant to be shown when the player losses.
+
+    private bool goal;                                                      // Checks to see if the player has reached the goal
 
     // Use this for initialization
     void Start () {
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour {
         staminaRegen = 2f;
         hp = 100;
         score = 0;
-        lostObjects = GameObject.FindGameObjectsWithTag ("Lost");
+        winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
+        goal = false;
 
         // Initialize stamina properties
         stamina.setStamina (playerStamina);
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour {
         // Initialize health properties
         health.Hp = hp;
 
-        hideLost (lostObjects);
+        hideWinOrLose (winOrLoseObjects);
     }
 
     // Update is called once per frame
@@ -110,15 +113,12 @@ public class PlayerController : MonoBehaviour {
         // Stops the game after the player's health is
         // reduced to 0
         if (health.Hp <= 0) {
-            moveScoreText ();
+            wonOrLost ();
+        }
 
-            playerScore.text = "Final Player Score: " + score;
-
-            // Shows the objects that let's the player know they've lost
-            showLost (lostObjects);
-
-            // Stops the game
-            Time.timeScale = 0f;
+        // Stops the game after the player has won
+        if (goal) {
+            wonOrLost ();
         }
     }
 
@@ -187,18 +187,37 @@ public class PlayerController : MonoBehaviour {
 
     // Shows all gameobjects that are meant to be 
     // shown when the player loses
-    private void showLost (GameObject[] gO) {
+    private void showWinOrLose (GameObject[] gO) {
         foreach (GameObject g in gO) {
             g.SetActive (true);
         }
     }
-    
+
     // Hides all gameobjects that are meant to be 
     // shown when the player loses
-    private void hideLost (GameObject[] gO) {
+    private void hideWinOrLose (GameObject[] gO) {
         foreach (GameObject g in gO) {
             g.SetActive (false);
         }
+    }
+
+    private void wonOrLost () {
+        moveScoreText ();
+
+        if (goal) {
+            playerWinState.text = "You Have Won!";
+        } else {
+            playerWinState.text = "You Have Lost!";
+        }
+
+
+            playerScore.text = "Final Player Score: " + score;
+
+        // Shows the objects that let's the player know they've lost
+        showWinOrLose (winOrLoseObjects);
+
+        // Stops the game
+        Time.timeScale = 0f;
     }
 
     // This is used to both resize, and move,
@@ -209,5 +228,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 50f, 0f), .01f);
+    }
+
+    public bool Goal {
+        set {
+            goal = value;
+        }
     }
 }

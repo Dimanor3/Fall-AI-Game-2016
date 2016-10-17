@@ -20,6 +20,6 @@ public class Bullet : MonoBehaviour {
 			col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
 		}
 
-		Destroy (gameObject);							// Destroy once collision occurs
+        gameObject.SetActive (false);   				// Turn off gameObject
 	}
 }

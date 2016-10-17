@@ -13,8 +13,8 @@ public class Points : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D col) {
         if (col.tag == "Player") {
-            col.GetComponent<PlayerController> ().incrementScore (worth);
-            Destroy (gameObject);
+            col.GetComponent<PlayerController> ().incrementScore (worth);   // Increment the player's score and update the text
+            gameObject.SetActive (false);                                   // Turn off the gameObject point
         }
     }
 }
