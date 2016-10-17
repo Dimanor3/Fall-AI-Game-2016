@@ -15,24 +15,27 @@ public class Health : MonoBehaviour {
 		}
 	}
 
-	// Set the health :D
-	public void setHP (int h) {
-		hp = maxHP = h;
-	}
+    // Get and Set health
+    public int Hp {
+        get {
+            return hp;
+        }
+
+        set {
+            hp = maxHP = value;
+        }
+    }
 
 	// Deal damage
 	public void dmg (int damage) {
 		hp -= damage;
 	}
 
-	// Get health
-	public int getHP () {
-		return hp;
-	}
-
 	// Set the amount of regen HP
-	public void setRegenHP (int rHP) {
-		regenHP = rHP;
+	public int RegenHP {
+        set {
+            regenHP = value;
+        }
 	}
 
 	// Regen HP

@@ -28,13 +28,10 @@ public class CameraController : MonoBehaviour {
             // Set the direction the camera needs to move in.
             dir = newCameraPosition - this.transform.position;
 
-            // Move the camera and make sure it doesn't go
-            // out too far from the player.
-            if (GameObject.FindGameObjectWithTag ("Player").GetComponent<SpriteRenderer> ().isVisible == true) {
-                transform.Translate (dir * cameraSpeed * Time.deltaTime);
-            }
+            // Move the camera around.
+            transform.Translate (dir * cameraSpeed * Time.deltaTime);
 
-            // Clamp the position so that it stays within player's view.
+            // Clamp the position so that it doesn't move too far out.
             transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -70f, 70f), Mathf.Clamp (transform.localPosition.y, -43f, 43f), -10f);
         }
 
