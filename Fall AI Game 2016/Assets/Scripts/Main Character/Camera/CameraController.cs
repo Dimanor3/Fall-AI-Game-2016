@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
 
 		// Initialize min and max movement
 		yCap = 43f;
-		xCap = 70f;
+		xCap = 75f;
 	}
 	
 	// Update is called once per frame.

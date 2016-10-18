@@ -30,9 +30,8 @@ public class PlayerController : MonoBehaviour {
 
     // Player score
     private int score;                                                      // Stores the player's score
-    [SerializeField] private GameObject playerScore;
-    private TextMesh playerScoreTextMesh;
-    [SerializeField] private Text playerWinState;
+    [SerializeField] private GameObject playerScore, playerWinState;
+    [SerializeField] private TextMesh playerScoreTextMesh, playerWinStateTextMesh;
     private GameObject[] winOrLoseObjects;                                  // Holds an array of GameObjects that are meant to be shown when the player losses.
 
     private bool goal;                                                      // Checks to see if the player has reached the goal
@@ -55,7 +54,6 @@ public class PlayerController : MonoBehaviour {
         score = 0;
         winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
         goal = false;
-        playerScoreTextMesh = playerScore.GetComponent<TextMesh> ();
 
         // Initialize stamina properties
         stamina.setStamina (playerStamina);
@@ -208,9 +206,9 @@ public class PlayerController : MonoBehaviour {
         moveScoreText ();
 
         if (goal) {
-            playerWinState.text = "You Have Won!";
+            playerWinStateTextMesh.text = "You Have Won!";
         } else {
-            playerWinState.text = "You Have Lost!";
+            playerWinStateTextMesh.text = "You Have Lost!";
         }
 
 
