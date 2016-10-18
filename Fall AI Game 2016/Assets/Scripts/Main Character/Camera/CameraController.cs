@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	[SerializeField] private float cameraSpeed;  		// Sets the maximum speed the camera can move.
+	[SerializeField] private float yCap, xCap;			// Used to restrict how far out the camera can move
 
     private Vector3 newCameraPosition = Vector3.zero;   // Used to determine the new.
 
@@ -13,6 +14,10 @@ public class CameraController : MonoBehaviour {
 	void Start () {
         // Initialize maxCameraSpeed.
         cameraSpeed = 1.2f;
+
+		// Initialize min and max movement
+		yCap = 43f;
+		xCap = 70f;
 	}
 	
 	// Update is called once per frame.
@@ -32,7 +37,7 @@ public class CameraController : MonoBehaviour {
             transform.Translate (dir * cameraSpeed * Time.deltaTime);
 
             // Clamp the position so that it doesn't move too far out.
-            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -70f, 70f), Mathf.Clamp (transform.localPosition.y, -43f, 43f), -10f);
+            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), Mathf.Clamp (transform.localPosition.y, -yCap, yCap), -10f);
         }
 
         // Reset the position so that the camera continues to
