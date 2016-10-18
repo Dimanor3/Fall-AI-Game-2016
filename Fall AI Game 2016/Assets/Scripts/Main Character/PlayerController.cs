@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour {
 
     // Player score
     private int score;                                                      // Stores the player's score
-    [SerializeField] private Text playerScore, playerWinState;
+    [SerializeField] private GameObject playerScore;
+    private TextMesh playerScoreTextMesh;
+    [SerializeField] private Text playerWinState;
     private GameObject[] winOrLoseObjects;                                  // Holds an array of GameObjects that are meant to be shown when the player losses.
 
     private bool goal;                                                      // Checks to see if the player has reached the goal
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour {
         score = 0;
         winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
         goal = false;
+        playerScoreTextMesh = playerScore.GetComponent<TextMesh> ();
 
         // Initialize stamina properties
         stamina.setStamina (playerStamina);
@@ -175,7 +178,7 @@ public class PlayerController : MonoBehaviour {
     // Increment the player's score as necessary
     public void incrementScore (int inc) {
         score += inc;
-        playerScore.text = "Player Score: " + score;
+        playerScoreTextMesh.text = "Player Score: " + score;
     }
 
     // Get the player's score
@@ -211,7 +214,7 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-            playerScore.text = "Final Player Score: " + score;
+            playerScoreTextMesh.text = "Final Player Score: " + score;
 
         // Shows the objects that let's the player know they've lost
         showWinOrLose (winOrLoseObjects);
@@ -223,11 +226,11 @@ public class PlayerController : MonoBehaviour {
     // This is used to both resize, and move,
     // the score text box
     private void moveScoreText () {
-        if (playerScore.fontSize < 25) {
-            playerScore.fontSize++;
-        }
+        playerScore.GetComponent<MeshRenderer> ().sortingOrder = 10;
 
-        playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 50f, 0f), .01f);
+        playerScoreTextMesh.characterSize = Mathf.Lerp (playerScoreTextMesh.characterSize, .6f, .008f);
+
+        playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 0f, 0f), .01f);
     }
 
     public bool Goal {
