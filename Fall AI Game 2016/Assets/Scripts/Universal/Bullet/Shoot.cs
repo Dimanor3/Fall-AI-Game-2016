@@ -3,10 +3,18 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
-	[SerializeField] private GameObject bullet;		// GameObject of the bullet
+	[SerializeField] private SFXManager sfxMan;		// Get access to the SFXManager
+
+	[SerializeField] private GameObject bullet;     // GameObject of the bullet
+
+	void Start () {
+		// Instantiate the sfxMan to an object containing the SFXManager
+		sfxMan = FindObjectOfType<SFXManager> ();
+	}
 
 	// Spawn bullet
 	public void shoot () {
+		sfxMan.GunShot.Play ();
 		Instantiate (bullet, transform.position, transform.rotation);
 	}
 }

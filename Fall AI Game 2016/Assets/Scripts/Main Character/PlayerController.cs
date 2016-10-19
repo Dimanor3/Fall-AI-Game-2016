@@ -8,8 +8,11 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Hidding))]
 public class PlayerController : MonoBehaviour {
 
-    // Player movement
-    private PlayerMotor motor;                                              // Used to move the player
+	[SerializeField]
+	private SFXManager sfxMan; // Get access to the SFXManager
+
+	// Player movement
+	private PlayerMotor motor;                                              // Used to move the player
     [SerializeField] private float moveSpeed;
     [SerializeField] private float runSpeed;
 
@@ -38,8 +41,11 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        // Initialize access to all outside classes
-        motor = GetComponent<PlayerMotor> ();
+		// Instantiate the sfxMan to an object containing the SFXManager
+		sfxMan = FindObjectOfType<SFXManager> ();
+
+		// Initialize access to all outside classes
+		motor = GetComponent<PlayerMotor> ();
         stamina = GetComponent<Stamina> ();
         health = GetComponent<Health> ();
         hidding = GetComponent<Hidding> ();
@@ -56,9 +62,9 @@ public class PlayerController : MonoBehaviour {
         goal = false;
 
         // Initialize stamina properties
-        stamina.setStamina (playerStamina);
-        stamina.setStaminaLoss (useStaminaSpeed);
-        stamina.setStaminaRegen (staminaRegen);
+        stamina.StaminaSG = playerStamina;
+        stamina.StaminaLoss = useStaminaSpeed;
+        stamina.StaminaRegen = staminaRegen;
 
         // Initialize health properties
         health.Hp = hp;
@@ -68,24 +74,41 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        // Check to see if the player is hidding or not
-        hidden = hidding.getHidding ();
+		// Running?
+		float run = Input.GetAxis ("Run");
+
+		// Main Character left right up and down movement
+		float horizontalMovement = Input.GetAxis ("Horizontal");
+		float verticalMovement = Input.GetAxis ("Vertical");
+
+		// Check to see if the player is hidding or not
+		hidden = hidding.getHidding ();
 
         // Set hidden in motor
-        motor.SetHidden (hidden);
+        motor.Hidden = hidden;
 
         if (!hidden) {
-            // Running?
-            float run = Input.GetAxis ("Run");
-
-            // Main Character left right up and down movement
-            float horizontalMovement = Input.GetAxis ("Horizontal");
-            float verticalMovement = Input.GetAxis ("Vertical");
-
             // Calculations for main characters movements
             Vector2 moveHorizontal = transform.right * horizontalMovement;
             Vector2 moveVertical = transform.up * verticalMovement;
             Vector2 movement = (moveHorizontal + moveVertical).normalized;
+
+			if (horizontalMovement != 0 || verticalMovement != 0) {
+				if (run == 0) {
+					if (!sfxMan.LightFootSteps.isPlaying) {
+						sfxMan.Running.Stop ();
+						sfxMan.LightFootSteps.Play ();
+					}
+				} else {
+					if (!sfxMan.Running.isPlaying) {
+						sfxMan.LightFootSteps.Stop ();
+						sfxMan.Running.Play ();
+					}
+				}
+			} else {
+				sfxMan.LightFootSteps.Stop ();
+				sfxMan.Running.Stop ();
+			}
 
             // Set player's movement speed
             movement *= running (run);
@@ -97,7 +120,7 @@ public class PlayerController : MonoBehaviour {
             regenStamina (run, horizontalMovement, verticalMovement);
 
             // Move the player
-            motor.SetMovement (movement);
+            motor.Movement = movement;
         } else {
             // This is used to move the player into the
             // hidding spot
@@ -108,8 +131,13 @@ public class PlayerController : MonoBehaviour {
                 moveToPos *= moveSpeed;
             }
 
-            motor.SetAIMovement (moveToPos);
+            motor.AiMovement = moveToPos;
         }
+
+		if (stamina.StaminaSG <= 200 && !sfxMan.HeavyBreathing.isPlaying) {
+			print ("TEST " + stamina.StaminaSG);
+			sfxMan.HeavyBreathing.Play ();
+		}
 
         // Stops the game after the player's health is
         // reduced to 0
@@ -126,7 +154,7 @@ public class PlayerController : MonoBehaviour {
     // Determines whether or not the player is running or walking
     // and outputs the speed accordingly
     float running (float run) {
-        if (run != 0 && stamina.getStamina () > 0) {
+        if (run != 0 && stamina.StaminaSG > 0) {
             return runSpeed;
         } else {
             return moveSpeed;
@@ -135,7 +163,7 @@ public class PlayerController : MonoBehaviour {
 
     // Checks to see if stamina is being used and uses it if it is
     void useStamina (float run, float hM, float vM) {
-        if (run != 0 && stamina.getStamina () > 0 && (hM != 0 || vM != 0)) {
+        if (run != 0 && stamina.StaminaSG > 0 && (hM != 0 || vM != 0)) {
             stamina.useStamina ();
         }
     }
@@ -154,6 +182,10 @@ public class PlayerController : MonoBehaviour {
         if (run == 0 && (hM != 0 || vM != 0)) {
             stamina.halfRegen ();
         }
+
+		if (stamina.StaminaSG >= stamina.MaxStamina) {
+			stamina.StaminaSG = stamina.MaxStamina;
+		}
     }
 
     // Checks to see if the player has entered

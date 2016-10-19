@@ -18,10 +18,15 @@ public class verticalDoor : MonoBehaviour {
 	// Used to treats the Input.GetAxisRaw("Use") as GetButtonDown
 	private bool use = false;
 
+	[SerializeField] private SFXManager sfxMan;	// Get access to the SFXManager
+
 	// Use this for initialization
 	void Start () {
 		// Initialize both the default and open rotations
 		defaultRot = transform.rotation;
+
+		// Instantiate the sfxMan to an object containing the SFXManager
+		sfxMan = FindObjectOfType<SFXManager> ();
 	}
 
 	// Update is called once per frame
@@ -62,8 +67,12 @@ public class verticalDoor : MonoBehaviour {
 			// the player interacts with it it will
 			// close and vice versa
 			if (open) {
+				playCloseDoorSFX ();
+
 				open = false;
 			} else {
+				playOpenDoorSFX ();
+
 				open = true;
 			}
 
@@ -90,5 +99,15 @@ public class verticalDoor : MonoBehaviour {
 		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = false;
 		}
+	}
+
+	// Play the Open Door SFX
+	private void playOpenDoorSFX () {
+		sfxMan.OpenDoor.Play ();
+	}
+
+	// Play the Close Door SFX
+	private void playCloseDoorSFX () {
+		sfxMan.CloseDoor.Play ();
 	}
 }

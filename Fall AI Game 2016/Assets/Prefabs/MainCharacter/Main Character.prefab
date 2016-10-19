@@ -55,7 +55,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1000011706793036
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -72,7 +72,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1000012166206552
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -110,25 +110,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012166206552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 20.8, z: 0}
+  m_LocalPosition: {x: 0, y: 20.8, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 4000012125623906}
-  m_RootOrder: 3
+  m_Father: {fileID: 4000012695171594}
+  m_RootOrder: 1
 --- !u!4 &4000010779511328
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011706793036}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.76, y: 34.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 53.76001, y: 34.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 4000012125623906}
-  m_RootOrder: 2
+  m_Father: {fileID: 4000012695171594}
+  m_RootOrder: 0
 --- !u!4 &4000012125623906
 Transform:
   m_ObjectHideFlags: 1
@@ -142,8 +142,6 @@ Transform:
   m_Children:
   - {fileID: 4000012695171594}
   - {fileID: 4000012187568420}
-  - {fileID: 4000010779511328}
-  - {fileID: 4000010659552324}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000012187568420
@@ -169,7 +167,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000010779511328}
+  - {fileID: 4000010659552324}
   m_Father: {fileID: 4000012125623906}
   m_RootOrder: 0
 --- !u!20 &20000013583645548
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb43a638c212fb44bb9e1f4a9f11b824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxMan: {fileID: 0}
   moveSpeed: 100
   runSpeed: 0
   playerStamina: 0
