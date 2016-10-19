@@ -8,6 +8,8 @@ TagManager:
   - Guard
   - Hidding Spot
   - WinOrLose
+  - NonCredits
+  - Credits
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,8 @@ public class PlayerMotor : MonoBehaviour {
 	private Vector2 rotation;		// Rotate the player
 	private float rotationSpeed;	// Rotation speed
 
-	private bool hidden = false; // Is the player hidden?
+	private bool hidden;             // Is the player hidden?
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,9 @@ public class PlayerMotor : MonoBehaviour {
 		// Player rotation initialization
 		rotation = new Vector2 (0f,0f) ;
 		rotationSpeed = 0f;
+
+		// Instantiate hidden and run
+		hidden = false;
 	}
 	
 	// Run every physics iteration
@@ -39,21 +43,29 @@ public class PlayerMotor : MonoBehaviour {
 	}
 
 	// Set the players movement
-	public void SetMovement (Vector2 move) {
-		movement = move;
+	public Vector2 Movement {
+		set {
+			movement = value;
+		}
 	}
 
 	// Set the players rotation
-	public void SetRotationSpeed (float rS) {
-		rotationSpeed = rS;
+	public float RotationSpeed {
+		set {
+			rotationSpeed = value;
+		}
 	}
 
-	public void SetAIMovement (Vector2 move) {
-		aiMovement = move;
+	public Vector2 AiMovement {
+		set {
+			aiMovement = value;
+		}
 	}
 
-	public void SetHidden (bool hide) {
-		hidden = hide;
+	public bool Hidden {
+		set {
+			hidden = value;
+		}
 	}
 
 	// Move the player

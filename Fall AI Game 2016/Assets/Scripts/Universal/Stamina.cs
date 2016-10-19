@@ -30,14 +30,20 @@ public class Stamina : MonoBehaviour {
 		stamina += staminaRegen / 2;
 	}
 
-	// Set the amount of stamina the player has
-	public void setStamina(float s){
-		stamina = maxStamina = s;
+	public float StaminaSG {
+		get {
+			return stamina;
+		}
+
+		set {
+			stamina = maxStamina = value;
+		}
 	}
 
-	// Set the players stamina regen speed
-	public void setStaminaRegen(float r){
-		staminaRegen = r;
+	public float StaminaRegen {
+		set {
+			staminaRegen = value;
+		}
 	}
 
 	// Use stamina
@@ -45,13 +51,15 @@ public class Stamina : MonoBehaviour {
 		stamina -= staminaLoss;
 	}
 
-	// Set the rate at which the player loses stamina
-	public void setStaminaLoss(float sL){
-		staminaLoss = sL;
+	public float StaminaLoss {
+		set {
+			staminaLoss = value;
+		}
 	}
 
-	// Get players stamina
-	public float getStamina(){
-		return stamina;
+	public float MaxStamina {
+		get {
+			return maxStamina;
+		}
 	}
 }
