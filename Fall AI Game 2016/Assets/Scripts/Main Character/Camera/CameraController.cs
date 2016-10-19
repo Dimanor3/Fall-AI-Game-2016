@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour {
         // Reset the position so that the camera continues to
         // follow the player.
         if (Input.GetAxis ("Look Ahead") <= 0) {
-            transform.localPosition = new Vector3 (0f, 0f, -10f);
+            transform.localPosition = Vector3.Lerp (transform.localPosition, new Vector3 (0f, 0f, -10f), .05f);
         }
 	}
 }
