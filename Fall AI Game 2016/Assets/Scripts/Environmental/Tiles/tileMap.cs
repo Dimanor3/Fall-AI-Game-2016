@@ -19,6 +19,8 @@ public class tileMap : MonoBehaviour {
 		height = tiles.transform.localScale.y * 10;
 		width = tiles.transform.localScale.x * 10;
 
+		print ("Width: " + width + " Height: " + height);
+
 		// Initialize the board
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
