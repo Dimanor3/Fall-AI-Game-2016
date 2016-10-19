@@ -40,9 +40,9 @@ public class verticalDoor : MonoBehaviour {
 		RaycastHit2D hit3 = Physics2D.Raycast (new Vector2 (transform.position.x + 1.6f, transform.position.y + 8), Vector2.right, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
 
 		// Draw the raycast
-		Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 3), Vector2.right * 100, Color.red, Mathf.Infinity);
-		Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 13), Vector2.right * 100, Color.red, Mathf.Infinity);
-		Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 8), Vector2.right * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 3), Vector2.right * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 13), Vector2.right * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 8), Vector2.right * 100, Color.red, Mathf.Infinity);
 
 		// Is the door open?
 		if (open) {

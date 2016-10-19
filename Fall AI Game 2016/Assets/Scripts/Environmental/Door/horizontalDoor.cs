@@ -40,9 +40,9 @@ public class horizontalDoor : MonoBehaviour {
 		RaycastHit2D hit3 = Physics2D.Raycast (new Vector2 (transform.position.x + 15, transform.position.y - .9f), Vector2.down, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
 
 		// Draw the raycast
-		Debug.DrawRay (new Vector2 (transform.position.x + 1, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
-		Debug.DrawRay (new Vector2 (transform.position.x + 8.15f, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
-		Debug.DrawRay (new Vector2 (transform.position.x + 15, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 1, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 8.15f, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector2 (transform.position.x + 15, transform.position.y - .9f), Vector2.down * 100f, Color.red, Mathf.Infinity);
 
 		// Is the door open?
 		if (open) {
