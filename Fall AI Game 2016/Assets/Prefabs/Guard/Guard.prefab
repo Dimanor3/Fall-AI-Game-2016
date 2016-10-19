@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011278350870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -405.8, y: 143.7, z: 0}
+  m_LocalPosition: {x: -405, y: 145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -98,15 +98,16 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.39}
+  m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -39.342255, y: -81.827675}
-      - {x: -24.43872, y: -27.72985}
-      - {x: -5.68927, y: 6.304932}
-      - {x: 5.3803406, y: 6.399735}
-      - {x: 27.808533, y: -28.401894}
-      - {x: 47.596252, y: -81.21031}
+    - - {x: 0, y: -85}
+      - {x: -35, y: -75}
+      - {x: -25, y: -25}
+      - {x: -7, y: 7}
+      - {x: 7, y: 7}
+      - {x: 25, y: -25}
+      - {x: 35, y: -75}
 --- !u!114 &114000010084047514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7835cc556a0e0042a14ea224a46bb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxMan: {fileID: 0}
   bullet: {fileID: 1000010249606814, guid: 60724469cb779ab47aa507ebcda4282f, type: 2}
 --- !u!114 &114000012687759932
 MonoBehaviour:
