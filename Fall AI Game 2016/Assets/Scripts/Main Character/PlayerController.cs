@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private SFXManager sfxMan; // Get access to the SFXManager
 
+	//status bars
+	[SerializeField] private StatusBar healthBar;
+	[SerializeField] private StatusBar staminaBar;
+
 	// Player movement
 	private PlayerMotor motor;                                              // Used to move the player
     [SerializeField] private float moveSpeed;
@@ -25,6 +29,7 @@ public class PlayerController : MonoBehaviour {
     // Player health
     private Health health;
     [SerializeField] private int hp;
+
 
     // Stuff for hidding the player
     private Hidding hidding;
@@ -65,9 +70,11 @@ public class PlayerController : MonoBehaviour {
         stamina.StaminaSG = playerStamina;
         stamina.StaminaLoss = useStaminaSpeed;
         stamina.StaminaRegen = staminaRegen;
+		staminaBar.MaxValue = playerStamina;
 
         // Initialize health properties
-        health.Hp = hp;
+		health.Hp = hp;
+		healthBar.MaxValue = hp;
 
         hideWinOrLose (winOrLoseObjects);
     }
@@ -165,26 +172,31 @@ public class PlayerController : MonoBehaviour {
     void useStamina (float run, float hM, float vM) {
         if (run != 0 && stamina.StaminaSG > 0 && (hM != 0 || vM != 0)) {
             stamina.useStamina ();
+			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina drains
         }
     }
 
     // Deals damage towards the player
     public void dealDamage (int dmg) {
         health.dmg (dmg);
+		healthBar.Value = health.Hp;//changes the status bar when damage is taken
     }
 
     // Checks to see whether or not the player can regen their stamina
     void regenStamina (float run, float hM, float vM) {
         if (run == 0 && hM == 0 && vM == 0) {
             stamina.regen ();
+			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina regens
         }
 
         if (run == 0 && (hM != 0 || vM != 0)) {
             stamina.halfRegen ();
+			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina regens by half
         }
 
 		if (stamina.StaminaSG >= stamina.MaxStamina) {
 			stamina.StaminaSG = stamina.MaxStamina;
+			staminaBar.Value = stamina.StaminaSG;
 		}
     }
 
