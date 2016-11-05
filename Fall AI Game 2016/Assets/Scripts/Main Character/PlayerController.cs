@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
             Vector2 moveVertical = transform.up * verticalMovement;
             Vector2 movement = (moveHorizontal + moveVertical).normalized;
 
-			if (horizontalMovement != 0 || verticalMovement != 0) {
+			if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
 				if (run == 0) {
 					if (!sfxMan.LightFootSteps.isPlaying) {
 						sfxMan.Running.Stop ();
@@ -111,6 +111,11 @@ public class PlayerController : MonoBehaviour {
 						sfxMan.LightFootSteps.Stop ();
 						sfxMan.Running.Play ();
 					}
+				}
+			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0) {
+				if (!sfxMan.LightFootSteps.isPlaying) {
+					sfxMan.Running.Stop ();
+					sfxMan.LightFootSteps.Play ();
 				}
 			} else {
 				sfxMan.LightFootSteps.Stop ();
@@ -142,7 +147,7 @@ public class PlayerController : MonoBehaviour {
         }
 
 		if (stamina.StaminaSG <= 200 && !sfxMan.HeavyBreathing.isPlaying) {
-			print ("TEST " + stamina.StaminaSG);
+			//print ("TEST " + stamina.StaminaSG);
 			sfxMan.HeavyBreathing.Play ();
 		}
 

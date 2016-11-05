@@ -19,13 +19,13 @@ public class tileMap : MonoBehaviour {
 		height = tiles.transform.localScale.y * 10;
 		width = tiles.transform.localScale.x * 10;
 
-		print ("Width: " + width + " Height: " + height);
+		//print ("Width: " + width + " Height: " + height);
 
 		// Initialize the board
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
 				Instantiate(tiles, new Vector3 ((float) i * width + gameObject.transform.localPosition.x + (width / 2), (float) j * height + gameObject.transform.localPosition.y + (height / 2), 1f), Quaternion.identity);
-				print ("i: " + i + " j: " + j + " spawn coordinate x: " + ((float) i * width + gameObject.transform.localPosition.x + (width / 2)) + " spawn coordinate y: " + ((float) j * height + gameObject.transform.localPosition.y + (height / 2)));
+				//print ("i: " + i + " j: " + j + " spawn coordinate x: " + ((float) i * width + gameObject.transform.localPosition.x + (width / 2)) + " spawn coordinate y: " + ((float) j * height + gameObject.transform.localPosition.y + (height / 2)));
 			}
 		}
 
