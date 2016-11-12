@@ -8,8 +8,7 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Hidding))]
 public class PlayerController : MonoBehaviour {
 
-	[SerializeField]
-	private SFXManager sfxMan; // Get access to the SFXManager
+	[SerializeField] private SFXManager sfxMan; // Get access to the SFXManager
 
 	//status bars
 	[SerializeField] private StatusBar healthBar;
