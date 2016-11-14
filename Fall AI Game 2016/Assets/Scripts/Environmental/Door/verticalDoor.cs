@@ -6,8 +6,10 @@ public class verticalDoor : MonoBehaviour {
 	// Used to open/close a door
 	[SerializeField] private float openDoor = 110f;		// How far should the door open?
 	[SerializeField] private Quaternion defaultRot;		// What's the doors closed position?
-	[SerializeField] private Quaternion openRot;			// What's the doors open position
+	[SerializeField] private Quaternion openRot;		// What's the doors open position
 	[SerializeField] private float smooth = 2f;			// Used to smooth the door opening and closing
+	[SerializeField] private soundMade soundMaker;		// Used to make sounds that guards can hear
+	private float soundLevel = 100f;					// Amount of sound made by door
 
 	// Let's us know whether the door is open or not
 	[SerializeField] private bool open = false;
@@ -22,6 +24,9 @@ public class verticalDoor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// Initialize soundMaker
+		soundMaker = FindObjectOfType<soundMade> ();
+
 		// Initialize both the default and open rotations
 		defaultRot = transform.rotation;
 
@@ -67,10 +72,14 @@ public class verticalDoor : MonoBehaviour {
 			// the player interacts with it it will
 			// close and vice versa
 			if (open) {
+				soundMaker.makeSound (soundLevel, this.gameObject);
+
 				playCloseDoorSFX ();
 
 				open = false;
 			} else {
+				soundMaker.makeSound (soundLevel, this.gameObject);
+
 				playOpenDoorSFX ();
 
 				open = true;

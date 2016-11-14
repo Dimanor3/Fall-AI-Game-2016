@@ -10,6 +10,9 @@ TagManager:
   - WinOrLose
   - NonCredits
   - Credits
+  - Lost
+  - NotCredits
+  - Sounds
   layers:
   - Default
   - TransparentFX

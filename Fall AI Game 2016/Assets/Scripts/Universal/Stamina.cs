@@ -21,17 +21,24 @@ public class Stamina : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Regenerate the players stamina over time.
+	/// Regenerate the player's stamina over time.
 	/// </summary>
 	public void regen(){
 		stamina += staminaRegen;
 	}
 
 	/// <summary>
-	/// Regenerate the players stamin at half the speed.
+	/// Regenerate the player's stamina at half the speed.
 	/// </summary>
 	public void halfRegen(){
 		stamina += staminaRegen / 2;
+	}
+
+	/// <summary>
+	/// Regenerate the player's stamina at 3/4ths the speed.
+	/// </summary>
+	public void threeQuaterRegen () {
+		stamina += (3 * staminaRegen) / 4;
 	}
 
 	/// <summary>

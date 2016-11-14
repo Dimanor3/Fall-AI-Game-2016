@@ -8,27 +8,23 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Hidding))]
 public class PlayerController : MonoBehaviour {
 
-	[SerializeField] private SFXManager sfxMan; // Get access to the SFXManager
+	[SerializeField] private SFXManager sfxMan;								// Get access to the SFXManager
 
 	//status bars
-	[SerializeField] private StatusBar healthBar;
-	[SerializeField] private StatusBar staminaBar;
+	[SerializeField] private StatusBar healthBar, staminaBar;
 
 	// Player movement
 	private PlayerMotor motor;                                              // Used to move the player
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float runSpeed;
+	[SerializeField] private float crawlSpeed, moveSpeed, runSpeed;
+	private float run, crawl;												// Is the player running? Is the player crawling?
 
     // Player stamina
     private Stamina stamina;
-    [SerializeField] private float playerStamina;
-    [SerializeField] private float useStaminaSpeed;
-    [SerializeField] private float staminaRegen;
+    [SerializeField] private float playerStamina, useStaminaSpeed, staminaRegen;
 
     // Player health
     private Health health;
     [SerializeField] private int hp;
-
 
     // Stuff for hidding the player
     private Hidding hidding;
@@ -57,6 +53,7 @@ public class PlayerController : MonoBehaviour {
         // Initialize all required variables
         moveSpeed = 28f;
         runSpeed = 70f;
+		crawlSpeed = 14f;
         playerStamina = 1000f;
         useStaminaSpeed = 5f;
         staminaRegen = 2f;
@@ -80,8 +77,9 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		// Running?
-		float run = Input.GetAxis ("Run");
+		run = Input.GetAxis ("Run");
+
+		crawl = Input.GetAxis ("Crawl");
 
 		// Main Character left right up and down movement
 		float horizontalMovement = Input.GetAxis ("Horizontal");
@@ -100,35 +98,51 @@ public class PlayerController : MonoBehaviour {
             Vector2 movement = (moveHorizontal + moveVertical).normalized;
 
 			if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
-				if (run == 0) {
+				if (run == 0 && crawl == 0) {
 					if (!sfxMan.LightFootSteps.isPlaying) {
 						sfxMan.Running.Stop ();
+						sfxMan.Crawling.Stop ();
 						sfxMan.LightFootSteps.Play ();
+					}
+				} else if (crawl != 0) {
+					if (!sfxMan.Crawling.isPlaying) {
+						sfxMan.Running.Stop ();
+						sfxMan.LightFootSteps.Stop ();
+						sfxMan.Crawling.Play ();
 					}
 				} else {
 					if (!sfxMan.Running.isPlaying) {
 						sfxMan.LightFootSteps.Stop ();
+						sfxMan.Crawling.Stop ();
 						sfxMan.Running.Play ();
 					}
 				}
-			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0) {
+			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl == 0) {
 				if (!sfxMan.LightFootSteps.isPlaying) {
 					sfxMan.Running.Stop ();
+					sfxMan.Crawling.Stop ();
 					sfxMan.LightFootSteps.Play ();
 				}
+			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl != 0) {
+				if (!sfxMan.Crawling.isPlaying) {
+					sfxMan.Running.Stop ();
+					sfxMan.LightFootSteps.Stop ();
+					sfxMan.Crawling.Play ();
+				}
 			} else {
+				sfxMan.Crawling.Stop ();
 				sfxMan.LightFootSteps.Stop ();
 				sfxMan.Running.Stop ();
 			}
 
             // Set player's movement speed
-            movement *= running (run);
+            movement *= running (run, crawl);
 
             // Use the player's stamina?
             useStamina (run, horizontalMovement, verticalMovement);
 
             // Regen the player's stamina?
-            regenStamina (run, horizontalMovement, verticalMovement);
+            regenStamina (run, crawl, horizontalMovement, verticalMovement);
 
             // Move the player
 			motor.Movement = movement;
@@ -167,11 +181,14 @@ public class PlayerController : MonoBehaviour {
     /// and outputs the speed accordingly
 	/// </summary>
 	/// <param name="run">To see whether the player is pressing the running key.</param>
+	/// <param name="crawl">To see whether the player is pressing the crawl key.</param>
 	/// <returns>Returns the correct movement multiplyer.</returns>
-    float running (float run) {
+	float running (float run, float crawl) {
         if (run != 0 && stamina.StaminaSG > 0) {
             return runSpeed;
-        } else {
+		} else if (crawl != 0) {
+			return crawlSpeed;
+		} else {
             return moveSpeed;
         }
     }
@@ -204,7 +221,7 @@ public class PlayerController : MonoBehaviour {
 	/// <param name="run">To see whether the player is pressing the running key.</param>
 	/// <param name="hM">To see whether the player is moving horizontally.</param>
 	/// <param name="vM">To see whether the player is moving vertically.</param>
-    void regenStamina (float run, float hM, float vM) {
+	void regenStamina (float run, float crawl, float hM, float vM) {
         if (run == 0 && hM == 0 && vM == 0) {
             stamina.regen ();
 			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina regens
@@ -214,6 +231,11 @@ public class PlayerController : MonoBehaviour {
             stamina.halfRegen ();
 			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina regens by half
         }
+
+		if (run == 0 && crawl != 0 && (hM != 0 || vM != 0)) {
+			stamina.threeQuaterRegen ();
+			staminaBar.Value = stamina.StaminaSG;//changes the status bar when stamina regens by three fourths
+		}
 
 		if (stamina.StaminaSG >= stamina.MaxStamina) {
 			stamina.StaminaSG = stamina.MaxStamina;
