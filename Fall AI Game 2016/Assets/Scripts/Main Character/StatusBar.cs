@@ -20,13 +20,24 @@ public class StatusBar : MonoBehaviour {
 		BarHandler ();
 	}
 
-	private void BarHandler(){//makes sure the new filler amount changes the image filler amount
+	/// <summary>
+	/// makes sure the new filler amount changes the image filler amount.
+	/// </summary>
+	private void BarHandler(){
 		if(fillAmount != filler.fillAmount){
 			filler.fillAmount = Mathf.Lerp(filler.fillAmount, fillAmount, Time.deltaTime * lerpSpeed);
 		}
 	}
 
-	private float Bound(float value, float inMin, float inMax, float outMin, float outMax){//bounds value between 0 and 1
+	/// <summary>
+	/// bounds value between 0 and 1.
+	/// </summary>
+	/// <param name="value">Value.</param>
+	/// <param name="inMin">In minimum.</param>
+	/// <param name="inMax">In max.</param>
+	/// <param name="outMin">Out minimum.</param>
+	/// <param name="outMax">Out max.</param>
+	private float Bound(float value, float inMin, float inMax, float outMin, float outMax){
 		return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 
 	}

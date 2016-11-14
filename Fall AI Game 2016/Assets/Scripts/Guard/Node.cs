@@ -23,12 +23,26 @@ public class Node {
 	public NodeConnection BottomRight;
 	
 	GameObject Debug;
-	
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Node"/> class.
+	/// </summary>
+	/// <param name="x">The x coordinate.</param>
+	/// <param name="y">The y coordinate.</param>
+	/// <param name="position">Position.</param>
+	/// <param name="grid">Grid.</param>
 	public Node(float x, float y, Vector2 position, Grid grid)
 	{
 		Initialize(x, y, position, grid);
 	}
-	
+
+	/// <summary>
+	/// Initialize the specified x, y, position and grid.
+	/// </summary>
+	/// <param name="x">The x coordinate.</param>
+	/// <param name="y">The y coordinate.</param>
+	/// <param name="position">Position.</param>
+	/// <param name="grid">Grid.</param>
 	public void Initialize(float x, float y, Vector2 position, Grid grid)
 	{
 		X = (int)x;
@@ -58,12 +72,19 @@ public class Node {
 		Debug.GetComponent<Debug> ().Y = Y;
 	}
 
+	/// <summary>
+	/// Sets the color.
+	/// </summary>
+	/// <param name="color">Color.</param>
 	public void SetColor(Color color)
 	{
 		Debug.transform.GetComponent<SpriteRenderer> ().color = color;
 	}
 
-	//Cull nodes if they don't have enough valid connection points (3)
+	/// <summary>
+	/// Cull nodes if they don't have enough valid connection points (3).
+	/// </summary>
+	/// <param name="grid">Grid.</param>
 	public void CheckConnectionsPass1(Grid grid)
 	{
 		if (!BadNode) {
@@ -100,7 +121,9 @@ public class Node {
 			SetColor (Color.red);
 	}
 
-	//Remove connections that connect to bad nodes
+	/// <summary>
+	/// Remove connections that connect to bad nodes.
+	/// </summary>
 	public void CheckConnectionsPass2()
 	{
 		if (Top != null && Top.Node != null && Top.Node.BadNode)
@@ -121,7 +144,9 @@ public class Node {
 			BottomRight.Valid = false;
 	}
 
-	//Disable all connections going from this this
+	/// <summary>
+	/// Disable all connections going from this this.
+	/// </summary>
 	public void DisableConnections()
 	{
 		if (Top != null) {
@@ -150,7 +175,9 @@ public class Node {
 		}
 	}
 
-	//debug draw for connection lines
+	/// <summary>
+	/// debug draw for connection lines.
+	/// </summary>
 	public void DrawConnections()
 	{
 		if (Top != null) Top.DrawLine ();
@@ -164,7 +191,10 @@ public class Node {
 	}
 
 
-	//Raycast in all 8 directions to determine valid routes
+	/// <summary>
+	/// Raycast in all 8 directions to determine valid routes.
+	/// </summary>
+	/// <param name="grid">Grid.</param>
 	public void InitializeConnections(Grid grid)
 	{
 		bool valid = true;

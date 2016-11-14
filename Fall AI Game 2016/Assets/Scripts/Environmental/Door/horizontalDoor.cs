@@ -99,12 +99,16 @@ public class horizontalDoor : MonoBehaviour {
 		}
 	}
 
-	// Play the Open Door SFX
+	/// <summary>
+	/// Plays the Open Door SFX.
+	/// </summary>
 	private void playOpenDoorSFX () {
 		sfxMan.OpenDoor.Play ();
 	}
 
-	// Play the Close Door SFX
+	/// <summary>
+	/// Plays the Close Door SFX.
+	/// </summary>
 	private void playCloseDoorSFX () {
 		sfxMan.CloseDoor.Play ();
 	}

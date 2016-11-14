@@ -19,14 +19,18 @@ public class Buttons : MonoBehaviour {
 		hideCredits (credits);
 	}
 
-	// Exit game button
+	/// <summary>
+	/// Exits the game.
+	/// </summary>
     public void ExitGame () {
 		playButtonClick ();
 
         Application.Quit ();
     }
 
-	// Load to main menu button
+	/// <summary>
+	/// Button that loads the main menu and hides the credits.
+	/// </summary>
     public void MainMenuButton () {
 		playButtonClick ();
 
@@ -37,6 +41,9 @@ public class Buttons : MonoBehaviour {
         Time.timeScale = 1f;
     }
 
+	/// <summary>
+	/// Loads the main menu and hides the credits.
+	/// </summary>
 	public void MainMenuButton2 () {
 		playButtonClick ();
 		
@@ -44,7 +51,9 @@ public class Buttons : MonoBehaviour {
 		showNonCredits (nonCredits);
 	}
 
-	// Load to play game button
+	/// <summary>
+	/// Loads the main game.
+	/// </summary>
 	public void PlayGameButton () {
 		playButtonClick ();
 
@@ -52,7 +61,9 @@ public class Buttons : MonoBehaviour {
         Time.timeScale = 1f;
     }
 
-	// Load to play test button
+	/// <summary>
+	/// Loads the test scene.
+	/// </summary>
 	public void PlayTestButton () {
 		playButtonClick ();
 
@@ -61,6 +72,9 @@ public class Buttons : MonoBehaviour {
     }
 
 	// Display the Credits
+	/// <summary>
+	/// Shows the credits and hides the main menu.
+	/// </summary>
 	public void CreditsButton () {
 		playButtonClick ();
 		
@@ -68,35 +82,49 @@ public class Buttons : MonoBehaviour {
 		showCredits (credits);
 	}
 
-	// Play the buttonclick sound effect sound
+	/// <summary>
+	/// Plays the button click sound.
+	/// </summary>
     private void playButtonClick () {
 		if (!sfxMan.ButtonClick.isPlaying) {
 			sfxMan.ButtonClick.Play ();
 		}
     }
 
-	// Hide Credits
+	/// <summary>
+	/// Hides the credits.
+	/// </summary>
+	/// <param name="gO">Gets a list of Gameobjects that have the credits tag.</param>
 	private void hideCredits (GameObject[] gO) {
 		foreach (GameObject g in gO) {
 			g.SetActive (false);
 		}
 	}
 
-	// Show Credits
+	/// <summary>
+	/// Shows the credits.
+	/// </summary>
+	/// <param name="gO">Gets a list of Gameobjects that have the credits tag.</param>
 	private void showCredits (GameObject[] gO) {
 		foreach (GameObject g in gO) {
 			g.SetActive (true);
 		}
 	}
 
-	// Hide Non Credits
+	/// <summary>
+	/// Hides the non credits.
+	/// </summary>
+	/// <param name="gO">Gets a list of Gameobjects that have the non credits tag.</param>
 	private void hideNonCredits (GameObject[] gO) {
 		foreach (GameObject g in gO) {
 			g.SetActive (false);
 		}
 	}
 
-	// Show Non Credits
+	/// <summary>
+	/// Shows the non credits.
+	/// </summary>
+	/// <param name="gO">Gets a list of Gameobjects that have the non credits tag.</param>
 	private void showNonCredits (GameObject[] gO) {
 		foreach (GameObject g in gO) {
 			g.SetActive (true);

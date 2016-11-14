@@ -28,42 +28,71 @@ public class SFXManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Plays the button click sound effect.
+	/// </summary>
+	/// <returns>The button click sound effect.</returns>
 	public AudioSource ButtonClick {
 		get {
 			return buttonClick;
 		}
 	}
 
+	/// <summary>
+	/// Plays the open door sound effect.
+	/// </summary>
+	/// <returns>The open door sound effect.</returns>
 	public AudioSource OpenDoor {
 		get {
 			return openDoor;
 		}
 	}
 
+
+	/// <summary>
+	/// Plays the close door sound effect.
+	/// </summary>
+	/// <returns>The close door sound effect.</returns>
 	public AudioSource CloseDoor {
 		get {
 			return closeDoor;
 		}
 	}
 
+	/// <summary>
+	/// Plays the gun shot sound effect.
+	/// </summary>
+	/// <returns>The gun shot sound effect.</returns>
 	public AudioSource GunShot {
 		get {
 			return gunShot;
 		}
 	}
 
+	/// <summary>
+	/// Plays the light foot steps sound effect.
+	/// </summary>
+	/// <returns>The light foot steps sound effect.</returns>
 	public AudioSource LightFootSteps {
 		get {
 			return lightFootSteps;
 		}
 	}
 
+	/// <summary>
+	/// Plays the running sound effect.
+	/// </summary>
+	/// <returns>The running sound effect.</returns>
 	public AudioSource Running {
 		get {
 			return running;
 		}
 	}
 
+	/// <summary>
+	/// Plays the heavy breathing sound effect.
+	/// </summary>
+	/// <returns>The heavy breathing sound effect.</returns>
 	public AudioSource HeavyBreathing {
 		get {
 			return heavyBreathing;

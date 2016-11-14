@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 		hidden = hidding.getHidding ();
 
         // Set hidden in motor
-        motor.Hidden = hidden;
+		motor.Hidden = hidden;
 
         if (!hidden) {
             // Calculations for main characters movements
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour {
             regenStamina (run, horizontalMovement, verticalMovement);
 
             // Move the player
-            motor.Movement = movement;
+			motor.Movement = movement;
         } else {
             // This is used to move the player into the
             // hidding spot
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
                 moveToPos *= moveSpeed;
             }
 
-            motor.AiMovement = moveToPos;
+			motor.AiMovement = moveToPos;
         }
 
 		if (stamina.StaminaSG <= 200 && !sfxMan.HeavyBreathing.isPlaying) {
@@ -162,8 +162,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Determines whether or not the player is running or walking
-    // and outputs the speed accordingly
+	/// <summary>
+	/// Determines whether or not the player is running or walking
+    /// and outputs the speed accordingly
+	/// </summary>
+	/// <param name="run">To see whether the player is pressing the running key.</param>
+	/// <returns>Returns the correct movement multiplyer.</returns>
     float running (float run) {
         if (run != 0 && stamina.StaminaSG > 0) {
             return runSpeed;
@@ -172,7 +176,12 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Checks to see if stamina is being used and uses it if it is
+	/// <summary>
+    /// Checks to see if stamina is being used and uses it if it is.
+	/// </summary>
+	/// <param name="run">To see whether the player is pressing the running key.</param>
+	/// <param name="hM">To see whether the player is moving horizontally.</param>
+	/// <param name="vM">To see whether the player is moving vertically.</param>
     void useStamina (float run, float hM, float vM) {
         if (run != 0 && stamina.StaminaSG > 0 && (hM != 0 || vM != 0)) {
             stamina.useStamina ();
@@ -180,13 +189,21 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Deals damage towards the player
+	/// <summary>
+	/// Deals damage towards the player.
+	/// </summary>
+	/// <param name="dmg">The amount of damage being dealt to the player.</param>
     public void dealDamage (int dmg) {
         health.dmg (dmg);
-		healthBar.Value = health.Hp;//changes the status bar when damage is taken
+		healthBar.Value = health.Hp;	//changes the status bar when damage is taken
     }
 
-    // Checks to see whether or not the player can regen their stamina
+	/// <summary>
+	/// Checks to see whether or not the player can regen their stamina.
+	/// </summary>
+	/// <param name="run">To see whether the player is pressing the running key.</param>
+	/// <param name="hM">To see whether the player is moving horizontally.</param>
+	/// <param name="vM">To see whether the player is moving vertically.</param>
     void regenStamina (float run, float hM, float vM) {
         if (run == 0 && hM == 0 && vM == 0) {
             stamina.regen ();
@@ -204,8 +221,10 @@ public class PlayerController : MonoBehaviour {
 		}
     }
 
-    // Checks to see if the player has entered
-    // a certain space
+	/// <summary>
+    /// Checks to see if the player has entered a certain space.
+	/// </summary>
+	/// <param name="col">The collider of the object that has collided with the player.</param>
     void OnTriggerEnter2D (Collider2D col) {
         // Checks to see if the player is in the range
         // of a hidding spot
@@ -214,42 +233,56 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Return whether the player is currently hidden or not
+	/// <summary>
+    /// Return whether the player is currently hidden or not.
+	/// </summary>
     public bool Hidden {
         get {
             return hidden;
         }
     }
 
-    // Increment the player's score as necessary
+	/// <summary>
+	/// Increment the player's score as necessary
+	/// </summary>
+	/// <param name="inc">The amount the player's score needs to be incremented by.</param>
     public void incrementScore (int inc) {
         score += inc;
         playerScoreTextMesh.text = "Player Score: " + score;
     }
 
-    // Get the player's score
+	/// <summary>
+	/// Get the player's score.
+	/// </summary>
     public int Score {
         get {
             return score;
         }
     }
 
-    // Shows all gameobjects that are meant to be 
-    // shown when the player loses
+	/// <summary>
+    /// Shows all gameobjects that are meant to be shown when the player loses.
+	/// </summary>
+	/// <param name="gO">The list of GameObjects that are going to be displayed to the player.</param>
     private void showWinOrLose (GameObject[] gO) {
         foreach (GameObject g in gO) {
             g.SetActive (true);
         }
     }
 
-    // Hides all gameobjects that are meant to be 
-    // shown when the player loses
+	/// <summary>
+    /// Hides all gameobjects that are meant to be shown when the player loses.
+	/// </summary>
+	/// <param name="gO">The list of GameObjects that are going to be displayed to the player.</param>
     private void hideWinOrLose (GameObject[] gO) {
         foreach (GameObject g in gO) {
             g.SetActive (false);
         }
     }
 
+	/// <summary>
+	/// Determine whether the player has won or lost the game and displays the necessary information.
+	/// </summary>
     private void wonOrLost () {
         moveScoreText ();
 
@@ -260,17 +293,18 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-            playerScoreTextMesh.text = "Final Player Score: " + score;
+        playerScoreTextMesh.text = "Final Player Score: " + score;
 
         // Shows the objects that let's the player know they've lost
-        showWinOrLose (winOrLoseObjects);
+		showWinOrLose (winOrLoseObjects);
 
         // Stops the game
         Time.timeScale = 0f;
     }
 
-    // This is used to both resize, and move,
-    // the score text box
+	/// <summary>
+    /// This is used to both resize, and move, the score text box.
+	/// </summary>
     private void moveScoreText () {
         playerScore.GetComponent<MeshRenderer> ().sortingOrder = 10;
 
@@ -279,6 +313,10 @@ public class PlayerController : MonoBehaviour {
         playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 0f, 0f), .01f);
     }
 
+	/// <summary>
+	/// Sets a value indicating whether this <see cref="PlayerController"/> is goal.
+	/// </summary>
+	/// <value><c>true</c> if goal; otherwise, <c>false</c>.</value>
     public bool Goal {
         set {
             goal = value;

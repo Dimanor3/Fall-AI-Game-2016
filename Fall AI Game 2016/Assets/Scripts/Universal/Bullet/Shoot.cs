@@ -12,7 +12,9 @@ public class Shoot : MonoBehaviour {
 		sfxMan = FindObjectOfType<SFXManager> ();
 	}
 
-	// Spawn bullet
+	/// <summary>
+	/// Spawn bullet.
+	/// </summary>
 	public void shoot () {
 		sfxMan.GunShot.Play ();
 		Instantiate (bullet, transform.position, transform.rotation);

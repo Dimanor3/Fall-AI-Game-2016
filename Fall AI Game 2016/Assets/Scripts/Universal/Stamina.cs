@@ -20,16 +20,24 @@ public class Stamina : MonoBehaviour {
 		}
 	}
 
-	// Regenerate the players stamina over time
+	/// <summary>
+	/// Regenerate the players stamina over time.
+	/// </summary>
 	public void regen(){
 		stamina += staminaRegen;
 	}
 
-	// Regenerate the players stamin at half the speed
+	/// <summary>
+	/// Regenerate the players stamin at half the speed.
+	/// </summary>
 	public void halfRegen(){
 		stamina += staminaRegen / 2;
 	}
 
+	/// <summary>
+	/// Gets or sets the stamina S.
+	/// </summary>
+	/// <value>The amount of stamina.</value>
 	public float StaminaSG {
 		get {
 			return stamina;
@@ -40,23 +48,37 @@ public class Stamina : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Sets the stamina regen.
+	/// </summary>
+	/// <value>The stamina regen.</value>
 	public float StaminaRegen {
 		set {
 			staminaRegen = value;
 		}
 	}
 
-	// Use stamina
+	/// <summary>
+	/// Use stamina.
+	/// </summary>
 	public void useStamina(){
 		stamina -= staminaLoss;
 	}
 
+	/// <summary>
+	/// Sets the stamina loss.
+	/// </summary>
+	/// <value>The stamina loss.</value>
 	public float StaminaLoss {
 		set {
 			staminaLoss = value;
 		}
 	}
 
+	/// <summary>
+	/// Gets the max stamina.
+	/// </summary>
+	/// <value>The max stamina.</value>
 	public float MaxStamina {
 		get {
 			return maxStamina;

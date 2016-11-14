@@ -42,40 +42,54 @@ public class PlayerMotor : MonoBehaviour {
 		}
 	}
 
-	// Set the players movement
+	/// <summary>
+	/// Set the players movement
+	/// </summary>
 	public Vector2 Movement {
 		set {
 			movement = value;
 		}
 	}
 
-	// Set the players rotation
+	/// <summary>
+	/// Set the players rotation
+	/// </summary>
 	public float RotationSpeed {
 		set {
 			rotationSpeed = value;
 		}
 	}
 
+	/// <summary>
+	/// Set the AI Movement for when the player goes into hiding
+	/// </summary>
 	public Vector2 AiMovement {
 		set {
 			aiMovement = value;
 		}
 	}
 
+	/// <summary>
+	/// Activate or deactivate whether or not the player is in a hiding spot (used for AI movements)
+	/// </summary>
 	public bool Hidden {
 		set {
 			hidden = value;
 		}
 	}
 
-	// Move the player
+	/// <summary>
+	/// Moves the player.
+	/// </summary>
 	void movePlayer () {
 		if (movement != Vector2.zero) {
 			rb.MovePosition (rb.position + movement * Time.fixedDeltaTime);
 		}
 	}
 
-	// Move player via AI
+	/// <summary>
+	/// Move player via AI.
+	/// </summary>
 	void kinematicMove () {
 		rb.velocity = aiMovement;
 	}
