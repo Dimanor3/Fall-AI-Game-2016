@@ -3,15 +3,19 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 
-	[SerializeField] private float cameraSpeed;  		// Sets the maximum speed the camera can move.
-	[SerializeField] private float yCap, xCap;			// Used to restrict how far out the camera can move
+	[SerializeField] private float cameraSpeed;  	// Sets the maximum speed the camera can move.
+	[SerializeField] private float yCap, xCap;		// Used to restrict how far out the camera can move.
 
-    private Vector3 newCameraPosition = Vector3.zero;   // Used to determine the new.
+    private Vector3 newCameraPosition;   			// Used to determine the new.
 
-    private Vector3 dir = Vector3.zero;                 // Used to store the direction of travel.
+    private Vector3 dir;                 			// Used to store the direction of travel.
 
 	// Use this for initialization.
 	void Start () {
+		// Initialize all necessary variables
+		newCameraPosition = Vector3.zero;
+		dir = Vector3.zero;
+
         // Initialize maxCameraSpeed.
         cameraSpeed = 1.2f;
 

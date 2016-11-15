@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class StatusBar : MonoBehaviour {
-	[SerializeField] private float lerpSpeed = 5;
-	[SerializeField] private float fillAmount = 1;//filler variable
+	[SerializeField] private float lerpSpeed;
+	[SerializeField] private float fillAmount;//filler variable
 	[SerializeField] private Image filler;//image filler
 	public float MaxValue{ get; set;}
 
@@ -14,7 +14,13 @@ public class StatusBar : MonoBehaviour {
 		}
 
 	}
-		
+
+	void Start () {
+		// Initialize all necessary variables
+		lerpSpeed = 5f;
+		fillAmount = 1f;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		BarHandler ();

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	// Player movement
 	private PlayerMotor motor;                                              // Used to move the player
 	[SerializeField] private float crawlSpeed, moveSpeed, runSpeed;
-	private float run, crawl;												// Is the player running? Is the player crawling?
+	[SerializeField] private float run, crawl;												// Is the player running? Is the player crawling?
 
     // Player stamina
     private Stamina stamina;
@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour {
 
     // Stuff for hidding the player
     private Hidding hidding;
-    [SerializeField] private bool hidden = false;                           // Checks to see if hte player is currently hidding or not
-    [SerializeField] private Vector2 hiddingSpotLocation = Vector3.zero;	// Holds the hidding spots location so that the player can move there
+    [SerializeField] private bool hidden;									// Checks to see if hte player is currently hidding or not
+    [SerializeField] private Vector2 hiddingSpotLocation;					// Holds the hidding spots location so that the player can move there
 
     // Player score
     private int score;                                                      // Stores the player's score
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private TextMesh playerScoreTextMesh, playerWinStateTextMesh;
     private GameObject[] winOrLoseObjects;                                  // Holds an array of GameObjects that are meant to be shown when the player losses.
 
-    private bool goal;                                                      // Checks to see if the player has reached the goal
+	[SerializeField] private bool goal;                                                      // Checks to see if the player has reached the goal
 
     // Use this for initialization
     void Start () {
@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour {
         score = 0;
         winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
         goal = false;
+		hidden = false;
+		hiddingSpotLocation = Vector3.zero;
 
         // Initialize stamina properties
         stamina.StaminaSG = playerStamina;

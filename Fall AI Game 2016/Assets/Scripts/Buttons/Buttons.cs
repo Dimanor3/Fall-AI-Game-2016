@@ -37,8 +37,8 @@ public class Buttons : MonoBehaviour {
 		hideCredits (credits);
 		showNonCredits (nonCredits);
 
+		Time.timeScale = 1f;
 		SceneManager.LoadScene (0);
-        Time.timeScale = 1f;
     }
 
 	/// <summary>
@@ -57,8 +57,8 @@ public class Buttons : MonoBehaviour {
 	public void PlayGameButton () {
 		playButtonClick ();
 
+		Time.timeScale = 1f;
 		SceneManager.LoadScene (1);
-        Time.timeScale = 1f;
     }
 
 	/// <summary>
@@ -67,8 +67,8 @@ public class Buttons : MonoBehaviour {
 	public void PlayTestButton () {
 		playButtonClick ();
 
+		Time.timeScale = 1f;
 		SceneManager.LoadScene (2);
-        Time.timeScale = 1f;
     }
 
 	// Display the Credits

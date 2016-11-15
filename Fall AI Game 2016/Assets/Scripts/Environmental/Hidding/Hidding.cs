@@ -4,13 +4,20 @@ using System.Collections;
 public class Hidding : MonoBehaviour {
 
 	// Detects if the player used the use button
-	[SerializeField] private bool used = false;
+	[SerializeField] private bool used;
 
 	// Checked to see if the user is already hidding or not
-	[SerializeField] private bool hidding = false;
+	[SerializeField] private bool hidding;
 
 	// Check to see if the player can enter the hidding spot
-	[SerializeField] private bool enter = false;
+	[SerializeField] private bool enter;
+
+	void Start () {
+		// Initialize all necessary variables
+		used = false;
+		hidding = false;
+		enter = false;
+	}
 	
 	// Update is called once per frame
 	void Update () {

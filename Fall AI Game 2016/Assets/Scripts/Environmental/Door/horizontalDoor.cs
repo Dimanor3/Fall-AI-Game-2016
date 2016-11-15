@@ -4,26 +4,34 @@ using System.Collections;
 public class horizontalDoor : MonoBehaviour {
 
 	// Used to open/close a door
-	[SerializeField] private float openDoor = 110f;		// How far should the door open?
+	[SerializeField] private float openDoor;			// How far should the door open?
 	[SerializeField] private Quaternion defaultRot;		// What's the doors closed position?
 	[SerializeField] private Quaternion openRot;		// What's the doors open position
-	[SerializeField] private float smooth = 2f;			// Used to smooth the door opening and closing
+	[SerializeField] private float smooth;				// Used to smooth the door opening and closing
 	[SerializeField] private soundMade soundMaker;		// Used to make sounds that guards can hear
-	private float soundLevel = 100f;					// Amount of sound made by door
+	private float soundLevel;							// Amount of sound made by door
 
 	// Let's us know whether the door is open or not
-	[SerializeField] private bool open = false;
+	[SerializeField] private bool open;
 
 	// Used to reactivate the trigger once it's been activated
-	private bool enter = false;
+	private bool enter;
 
 	// Used to treats the Input.GetAxisRaw("Use") as GetButtonDown
-	private bool use = false;
+	private bool use;
 	
 	[SerializeField] private SFXManager sfxMan;	// Get access to the SFXManager
 
 	// Use this for initialization
 	void Start () {
+		// Initialize all necessary variables
+		soundLevel = 100f;
+		openDoor = 110f;
+		smooth = 2f;
+		open = false;
+		enter = false;
+		use = false;
+
 		// Initialize soundMaker
 		soundMaker = FindObjectOfType<soundMade> ();
 

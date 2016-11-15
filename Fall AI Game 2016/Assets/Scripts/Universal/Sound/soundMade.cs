@@ -17,7 +17,7 @@ public class soundMade : MonoBehaviour {
 		guardList = GameObject.FindGameObjectsWithTag ("Guard");
 
 		// Instantiate all necessary variables
-		rateOfObjectDecay = .5f;
+		rateOfObjectDecay = 2f;
 	}
 
 	/// <summary>

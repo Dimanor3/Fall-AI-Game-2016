@@ -7,7 +7,7 @@ public class Health : MonoBehaviour {
 	private int maxHP = 0;
 	[SerializeField] private int hp = 0;
 	[SerializeField] private int regenHP = 0;
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (hp >= maxHP) {

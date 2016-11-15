@@ -3,12 +3,18 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
-	[SerializeField] private float firingSpeed = 500f;	// Bullets movement speed
+	[SerializeField] private float firingSpeed;		// Bullets movement speed
 
-	[SerializeField] private int damage = 10;			// Damage dealt
+	[SerializeField] private int damage;			// Damage dealt
 
-	[SerializeField] private Rigidbody2D rb;			// Bullet's rigidbody
-	
+	[SerializeField] private Rigidbody2D rb;		// Bullet's rigidbody
+
+	void Start () {
+		// Initialize all necessary variables
+		firingSpeed = 500f;
+		damage = 10;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		rb.AddForce (transform.up * firingSpeed);		// 	Move bullet
