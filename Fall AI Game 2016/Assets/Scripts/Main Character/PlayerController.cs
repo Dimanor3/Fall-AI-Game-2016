@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private TextMesh playerScoreTextMesh, playerWinStateTextMesh;
     private GameObject[] winOrLoseObjects;                                  // Holds an array of GameObjects that are meant to be shown when the player losses.
 
-	[SerializeField] private bool goal;                                                      // Checks to see if the player has reached the goal
+	[SerializeField] private bool goal;                                     // Checks to see if the player has reached the goal
+
+	[SerializeField] private soundMade soundMaker;							// Used to make sounds that guards can hear
+	private float soundLevelWalking, soundLevelRunning, soundLevelCrawling;	// Amount of sound made by door
 
 	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
@@ -51,6 +54,9 @@ public class PlayerController : MonoBehaviour {
 
 		// Initialize all required variables
 		winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
+
+		// Initialize soundMaker
+		soundMaker = FindObjectOfType<soundMade> ();
 	}
 
     // Use this for initialization
@@ -67,6 +73,9 @@ public class PlayerController : MonoBehaviour {
         goal = false;
 		hidden = false;
 		hiddingSpotLocation = Vector3.zero;
+		soundLevelRunning = 100f;
+		soundLevelWalking = 50f;
+		soundLevelCrawling = 10f;
 
         // Initialize stamina properties
         stamina.StaminaSG = playerStamina;
@@ -139,6 +148,14 @@ public class PlayerController : MonoBehaviour {
 				sfxMan.Crawling.Stop ();
 				sfxMan.LightFootSteps.Stop ();
 				sfxMan.Running.Stop ();
+			}
+
+			if (run != 0 && (horizontalMovement != 0 || verticalMovement != 0) && crawl == 0) {
+				soundMaker.makeSound (soundLevelRunning, this.gameObject);
+			} else if (run == 0 && (horizontalMovement != 0 | verticalMovement != 0) && crawl != 0) {
+				soundMaker.makeSound (soundLevelCrawling, this.gameObject);
+			} else if (run == 0 && crawl == 0 && (horizontalMovement != 0 || verticalMovement != 0)) {
+				soundMaker.makeSound (soundLevelWalking, this.gameObject);
 			}
 
             // Set player's movement speed
