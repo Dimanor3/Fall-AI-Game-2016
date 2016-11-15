@@ -7,11 +7,13 @@ public class Points : MonoBehaviour {
 
     private int worth;  // The player's score
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
+	}
 
+	// Use this for initialization
+	void Start () {
         // Instantiate score
         worth = 1;
 	}

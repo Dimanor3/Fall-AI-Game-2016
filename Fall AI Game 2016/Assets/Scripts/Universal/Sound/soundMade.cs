@@ -12,10 +12,12 @@ public class soundMade : MonoBehaviour {
 
 	private Vector3 rand;
 
-	void Start () {
+	void Awake () {
 		// Instantiate a list of all guards
 		guardList = GameObject.FindGameObjectsWithTag ("Guard");
+	}
 
+	void Start () {
 		// Instantiate all necessary variables
 		rateOfObjectDecay = 2f;
 	}

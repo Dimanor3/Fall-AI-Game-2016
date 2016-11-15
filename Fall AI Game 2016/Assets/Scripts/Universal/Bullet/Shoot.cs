@@ -7,7 +7,7 @@ public class Shoot : MonoBehaviour {
 
 	[SerializeField] private GameObject bullet;     // GameObject of the bullet
 
-	void Start () {
+	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
 	}

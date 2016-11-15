@@ -22,6 +22,14 @@ public class verticalDoor : MonoBehaviour {
 
 	[SerializeField] private SFXManager sfxMan;	// Get access to the SFXManager
 
+	void Awake () {
+		// Initialize soundMaker
+		soundMaker = FindObjectOfType<soundMade> ();
+
+		// Instantiate the sfxMan to an object containing the SFXManager
+		sfxMan = FindObjectOfType<SFXManager> ();
+	}
+
 	// Use this for initialization
 	void Start () {
 		// Initialize all necessary variables
@@ -32,14 +40,8 @@ public class verticalDoor : MonoBehaviour {
 		enter = false;
 		use = false;
 
-		// Initialize soundMaker
-		soundMaker = FindObjectOfType<soundMade> ();
-
 		// Initialize both the default and open rotations
 		defaultRot = transform.rotation;
-
-		// Instantiate the sfxMan to an object containing the SFXManager
-		sfxMan = FindObjectOfType<SFXManager> ();
 	}
 
 	// Update is called once per frame

@@ -8,14 +8,16 @@ public class Buttons : MonoBehaviour {
 
 	private GameObject[] credits, nonCredits;	// Gets access to all GameObjects that either have the credits or nonCredits tag
 
-	void Start () {
+	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
 
 		// Instantiate both credits and nonCredits
 		credits = GameObject.FindGameObjectsWithTag ("Credits");
 		nonCredits = GameObject.FindGameObjectsWithTag ("NonCredits");
+	}
 
+	void Start () {
 		hideCredits (credits);
 	}
 
@@ -39,6 +41,7 @@ public class Buttons : MonoBehaviour {
 
 		Time.timeScale = 1f;
 		SceneManager.LoadScene (0);
+		Time.timeScale = 1f;
     }
 
 	/// <summary>
@@ -59,6 +62,7 @@ public class Buttons : MonoBehaviour {
 
 		Time.timeScale = 1f;
 		SceneManager.LoadScene (1);
+		Time.timeScale = 1f;
     }
 
 	/// <summary>
@@ -69,6 +73,7 @@ public class Buttons : MonoBehaviour {
 
 		Time.timeScale = 1f;
 		SceneManager.LoadScene (2);
+		Time.timeScale = 1f;
     }
 
 	// Display the Credits

@@ -16,12 +16,13 @@ public class PlayerMotor : MonoBehaviour {
 
 	private bool hidden;             // Is the player hidden?
 
+	void Awake () {
+		// Initialize the main characters rigidbody
+		rb = GetComponent<Rigidbody2D> ();
+	}
 
 	// Use this for initialization
 	void Start () {
-		// Initialize the main characters rigidbody
-		rb = GetComponent<Rigidbody2D> ();
-
 		// Player movement initialization
 		movement = new Vector2 (0f,0f) ;
 

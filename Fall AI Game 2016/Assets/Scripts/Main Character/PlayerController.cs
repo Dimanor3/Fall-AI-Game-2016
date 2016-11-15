@@ -39,17 +39,22 @@ public class PlayerController : MonoBehaviour {
 
 	[SerializeField] private bool goal;                                                      // Checks to see if the player has reached the goal
 
-    // Use this for initialization
-    void Start () {
+	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
 
 		// Initialize access to all outside classes
 		motor = GetComponent<PlayerMotor> ();
-        stamina = GetComponent<Stamina> ();
-        health = GetComponent<Health> ();
-        hidding = GetComponent<Hidding> ();
+		stamina = GetComponent<Stamina> ();
+		health = GetComponent<Health> ();
+		hidding = GetComponent<Hidding> ();
 
+		// Initialize all required variables
+		winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
+	}
+
+    // Use this for initialization
+    void Start () {
         // Initialize all required variables
         moveSpeed = 28f;
         runSpeed = 70f;
@@ -59,7 +64,6 @@ public class PlayerController : MonoBehaviour {
         staminaRegen = 2f;
         hp = 100;
         score = 0;
-        winOrLoseObjects = GameObject.FindGameObjectsWithTag ("WinOrLose");
         goal = false;
 		hidden = false;
 		hiddingSpotLocation = Vector3.zero;
