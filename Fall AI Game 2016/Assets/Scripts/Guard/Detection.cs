@@ -6,7 +6,7 @@ public class Detection : MonoBehaviour {
 	// Target's transform agent needs to move
 	[SerializeField] private Transform target;
 	// Agent's rigidbody
-	[SerializeField] private Rigidbody2D rb;
+	[SerializeField] private Rigidbody rb;
 	[SerializeField] private float rotationSpeed;
 	//[SerializeField] private float rotationTimer;
 	private bool detected;
@@ -20,7 +20,7 @@ public class Detection : MonoBehaviour {
 
 	void Awake () {
 		// Initialize agents rigidbody
-		rb = GetComponent<Rigidbody2D> ();
+		rb = GetComponent<Rigidbody> ();
 	}
 
 	// Use this for initialization
@@ -49,13 +49,13 @@ public class Detection : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D col) {
+	void OnTriggerEnter (Collider col) {
 		if (col.CompareTag ("Player")) {
 			detected = true;
 		}
 	}
 
-	void OnTriggerExit2D (Collider2D col) {
+	void OnTriggerExit (Collider col) {
 		if (col.CompareTag ("Player")) {
 			detected = false;
 		}
