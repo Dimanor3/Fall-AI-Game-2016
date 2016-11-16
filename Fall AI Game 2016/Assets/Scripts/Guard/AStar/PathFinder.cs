@@ -2,6 +2,13 @@
 
 public static class PathFinder
 {     
+	/// <summary>
+	/// Finds the path.
+	/// </summary>
+	/// <returns>The path.</returns>
+	/// <param name="world">World.</param>
+	/// <param name="start">Start.</param>
+	/// <param name="end">End.</param>
 	public static BreadCrumb FindPath(Grid world, Point start, Point end)
 	{        
 	    BreadCrumb bc = FindPathReversed(world, start, end);
@@ -35,7 +42,14 @@ public static class PathFinder
             return null;
         }
 	}
-	
+
+	/// <summary>
+	/// Finds the path reversed.
+	/// </summary>
+	/// <returns>The path reversed.</returns>
+	/// <param name="world">World.</param>
+	/// <param name="start">Start.</param>
+	/// <param name="end">End.</param>
 	private static BreadCrumb FindPathReversed(Grid world, Point start, Point end)
 	{
 	    MinHeap<BreadCrumb> openList = new MinHeap<BreadCrumb>(256);
@@ -116,9 +130,11 @@ public static class PathFinder
 	    }
 	    return null; //no path found
 	}
-	
-	//Neighbour options
-	//Our diamond pattern offsets top/bottom/left/right by 2 instead of 1
+
+	/// <summary>
+	/// Neighbour options.
+	/// Our diamond pattern offsets top/bottom/left/right by 2 instead of 1.
+	/// </summary>
 	private static Point[] surrounding = new Point[]{                         
 		new Point(0, 2), new Point(-2, 0), new Point(2, 0), new Point(0,-2),	
         new Point(-1, 1), new Point(-1, -1), new Point(1, 1), new Point(1, -1)

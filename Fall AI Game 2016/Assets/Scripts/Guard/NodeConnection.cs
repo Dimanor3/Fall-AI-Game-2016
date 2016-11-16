@@ -10,7 +10,13 @@ public class NodeConnection
 	//Debug
 	private LineRenderer Debug;
 	GameObject go;
-	
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="NodeConnection"/> class.
+	/// </summary>
+	/// <param name="parent">Parent.</param>
+	/// <param name="node">Node.</param>
+	/// <param name="valid">If set to <c>true</c> valid.</param>
 	public NodeConnection(Node parent, Node node, bool valid)
 	{
 		Valid = valid;
@@ -23,7 +29,9 @@ public class NodeConnection
 			Valid = false;
 	}
 
-	//Debug
+	/// <summary>
+	/// Debug.
+	/// </summary>
 	public void DrawLine()
 	{	
 		if (Valid) {

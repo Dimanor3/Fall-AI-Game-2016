@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Direction.
+/// </summary>
 public enum Direction
 {
 	Right,
@@ -108,7 +111,11 @@ public class Grid : MonoBehaviour {
 		}		
 	}		
 	
-
+	/// <summary>
+	/// Worlds to grid.
+	/// </summary>
+	/// <returns>The to grid.</returns>
+	/// <param name="worldPosition">World position.</param>
 	public Point WorldToGrid(Vector2 worldPosition)
 	{
 		Vector2 gridPosition = new Vector2((worldPosition.x * 2f), -(worldPosition.y * 2f) + 1);
@@ -180,13 +187,24 @@ public class Grid : MonoBehaviour {
 		return new Point(node.X , node.Y);
 	}
 
+	/// <summary>
+	/// Grids to world.
+	/// </summary>
+	/// <returns>The to world.</returns>
+	/// <param name="gridPosition">Grid position.</param>
 	public static Vector2 GridToWorld(Point gridPosition)
 	{
 		Vector2 world = new Vector2(gridPosition.X / 2f, -(gridPosition.Y / 2f - 0.5f));
 
 		return world;
 	}
-	
+
+	/// <summary>
+	/// Connections the is valid.
+	/// </summary>
+	/// <returns><c>true</c>, if is valid was connectioned, <c>false</c> otherwise.</returns>
+	/// <param name="point1">Point1.</param>
+	/// <param name="point2">Point2.</param>
 	public bool ConnectionIsValid(Point point1, Point point2)
 	{
 		//comparing same point, return false

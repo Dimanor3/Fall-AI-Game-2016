@@ -9,21 +9,35 @@ public class MinHeap<T> where T : IComparable<T>
 	private T mheap;
 	private T[] array;
 	private T[] tempArray;
-	
+
+	/// <summary>
+	/// Gets the count.
+	/// </summary>
+	/// <value>The count.</value>
 	public int Count
 	{
 	    get { return this.count; }
 	}
-	
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="MinHeap`1"/> class.
+	/// </summary>
 	public MinHeap() : this(16) { }
-	
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="MinHeap`1"/> class.
+	/// </summary>
+	/// <param name="capacity">Capacity.</param>
 	public MinHeap(int capacity)
 	{
 	    this.count = 0;
 	    this.capacity = capacity;
 	    array = new T[capacity];
 	}
-	
+
+	/// <summary>
+	/// Builds the head.
+	/// </summary>
 	public void BuildHead()
 	{
 	    int position;
@@ -32,7 +46,11 @@ public class MinHeap<T> where T : IComparable<T>
 	        this.MinHeapify(position);
 	    }
 	}
-	
+
+	/// <summary>
+	/// Add the specified item.
+	/// </summary>
+	/// <param name="item">Item.</param>
 	public void Add(T item)
 	{
 	    this.count++;
@@ -54,7 +72,10 @@ public class MinHeap<T> where T : IComparable<T>
 	        parentPosition = ((position - 1) >> 1);
 	    }
 	}
-	
+
+	/// <summary>
+	/// Doubles the array.
+	/// </summary>
 	private void DoubleArray()
 	{
 	    this.capacity <<= 1;
@@ -62,7 +83,12 @@ public class MinHeap<T> where T : IComparable<T>
 	    CopyArray(this.array, tempArray);
 	    this.array = tempArray;
 	}
-	
+
+	/// <summary>
+	/// Copies the array.
+	/// </summary>
+	/// <param name="source">Source.</param>
+	/// <param name="destination">Destination.</param>
 	private static void CopyArray(T[] source, T[] destination)
 	{
 	    int index;
@@ -71,7 +97,10 @@ public class MinHeap<T> where T : IComparable<T>
 	        destination[index] = source[index];
 	    }
 	}
-	
+
+	/// <summary>
+	/// Peek this instance.
+	/// </summary>
 	public T Peek()
 	{
 	    if (this.count == 0)
@@ -81,7 +110,10 @@ public class MinHeap<T> where T : IComparable<T>
 	    return this.array[0];
 	}
 	
-	
+	/// <summary>
+	/// Extracts the first.
+	/// </summary>
+	/// <returns>The first.</returns>
 	public T ExtractFirst()
 	{
 	    if (this.count == 0)
@@ -94,7 +126,11 @@ public class MinHeap<T> where T : IComparable<T>
 	    this.MinHeapify(0);
 	    return temp;
 	}
-	
+
+	/// <summary>
+	/// Minimums the heapify.
+	/// </summary>
+	/// <param name="position">Position.</param>
 	private void MinHeapify(int position)
 	{
 	    do

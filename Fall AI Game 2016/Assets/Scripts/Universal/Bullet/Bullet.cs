@@ -2,19 +2,24 @@
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
+	[SerializeField] private float firingSpeed;		// Bullets movement speed
 
-	[SerializeField] private float firingSpeed = 500f;	// Bullets movement speed
+	[SerializeField] private int damage;			// Damage dealt
 
-	[SerializeField] private int damage = 10;			// Damage dealt
+	[SerializeField] private Rigidbody rb;			// Bullet's rigidbody
 
-	[SerializeField] private Rigidbody2D rb;			// Bullet's rigidbody
-	
-	// Update is called once per frame
-	void Update () {
-		rb.AddForce (transform.up * firingSpeed);		// 	Move bullet
+	void Start () {
+		// Initialize all necessary variables
+		firingSpeed = 500f;
+		damage = 10;
 	}
 
-	void OnCollisionEnter2D (Collision2D col) {
+	// Update is called once per frame
+	void Update () {
+		rb.AddForce (transform.forward * firingSpeed);		// 	Move bullet
+	}
+
+	void OnCollisionEnter (Collision col) {
 		// If hit player deal damage
 		if (col.gameObject.tag == "Player") {
 			col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);

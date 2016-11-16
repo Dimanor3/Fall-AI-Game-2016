@@ -7,7 +7,7 @@ public class Health : MonoBehaviour {
 	private int maxHP = 0;
 	[SerializeField] private int hp = 0;
 	[SerializeField] private int regenHP = 0;
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (hp >= maxHP) {
@@ -15,7 +15,10 @@ public class Health : MonoBehaviour {
 		}
 	}
 
-    // Get and Set health
+    /// <summary>
+	/// Get and Set health.
+    /// </summary>
+    /// <value>The hp.</value>
     public int Hp {
         get {
             return hp;
@@ -26,19 +29,27 @@ public class Health : MonoBehaviour {
         }
     }
 
-	// Deal damage
+	/// <summary>
+	/// Deal damage.
+	/// </summary>
+	/// <param name="damage">Damage.</param>
 	public void dmg (int damage) {
 		hp -= damage;
 	}
 
-	// Set the amount of regen HP
+	/// <summary>
+	/// Set the amount of regen HP.
+	/// </summary>
+	/// <value>The regen H.</value>
 	public int RegenHP {
         set {
             regenHP = value;
         }
 	}
 
-	// Regen HP
+	/// <summary>
+	/// Regen HP.
+	/// </summary>
 	public void regen () {
 		hp += regenHP;
 	}

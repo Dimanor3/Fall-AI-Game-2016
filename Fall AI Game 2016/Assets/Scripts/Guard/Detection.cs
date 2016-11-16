@@ -18,12 +18,13 @@ public class Detection : MonoBehaviour {
 	private Vector3 playerPosition;
 	private float angle;
 
-
+	void Awake () {
+		// Initialize agents rigidbody
+		rb = GetComponent<Rigidbody2D> ();
+	}
 
 	// Use this for initialization
 	void Start () {
-		// Initialize agents rigidbody
-		rb = GetComponent<Rigidbody2D> ();
 		rotationSpeed = 0f;
 		timer = 50;
 		maxTimer = 50;

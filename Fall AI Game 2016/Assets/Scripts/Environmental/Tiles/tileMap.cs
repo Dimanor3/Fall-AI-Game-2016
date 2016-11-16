@@ -24,7 +24,7 @@ public class tileMap : MonoBehaviour {
 		// Initialize the board
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
-				Instantiate(tiles, new Vector3 ((float) i * width + gameObject.transform.localPosition.x + (width / 2), (float) j * height + gameObject.transform.localPosition.y + (height / 2), 1f), Quaternion.identity);
+				Instantiate(tiles, new Vector3 ((float) i * width + gameObject.transform.localPosition.x + (width / 2), 1f, (float) j * height + gameObject.transform.localPosition.y + (height / 2)), Quaternion.identity);
 				//print ("i: " + i + " j: " + j + " spawn coordinate x: " + ((float) i * width + gameObject.transform.localPosition.x + (width / 2)) + " spawn coordinate y: " + ((float) j * height + gameObject.transform.localPosition.y + (height / 2)));
 			}
 		}
