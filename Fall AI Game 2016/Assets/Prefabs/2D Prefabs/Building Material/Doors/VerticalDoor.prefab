@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e30c50df466bc40bdc017c61e12b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openDoor: 110
+  openDoor: 0
   defaultRot: {x: 0, y: 0, z: 0, w: 0}
   openRot: {x: 0, y: 0, z: 0, w: 0}
-  smooth: 2
+  smooth: 0
   soundMaker: {fileID: 0}
   open: 0
   sfxMan: {fileID: 0}

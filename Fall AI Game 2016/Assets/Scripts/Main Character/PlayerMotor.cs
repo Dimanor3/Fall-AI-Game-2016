@@ -83,7 +83,7 @@ public class PlayerMotor : MonoBehaviour {
 	/// Moves the player.
 	/// </summary>
 	void movePlayer () {
-		if (movement != Vector2.zero) {
+		if (movement != Vector3.zero) {
 			rb.MovePosition (rb.position + movement * Time.fixedDeltaTime);
 		}
 	}
