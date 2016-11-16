@@ -23,11 +23,11 @@ public class verticalDoor : MonoBehaviour {
 	[SerializeField] private SFXManager sfxMan;	// Get access to the SFXManager
 
 	void Awake () {
-		// Initialize soundMaker
-		soundMaker = FindObjectOfType<soundMade> ();
-
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
+
+		// Initialize soundMaker
+		soundMaker = FindObjectOfType<soundMade> ();
 	}
 
 	// Use this for initialization
@@ -50,14 +50,14 @@ public class verticalDoor : MonoBehaviour {
 		float useValue = Input.GetAxisRaw ("Use");
 
 		// Used to see if the player is on the right side of the door
-		RaycastHit2D hit1 = Physics2D.Raycast (new Vector2 (transform.position.x + 1.6f, transform.position.y + 3), Vector2.right, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
-		RaycastHit2D hit2 = Physics2D.Raycast (new Vector2 (transform.position.x + 1.6f, transform.position.y + 13), Vector2.right, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
-		RaycastHit2D hit3 = Physics2D.Raycast (new Vector2 (transform.position.x + 1.6f, transform.position.y + 8), Vector2.right, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit1 = Physics.Raycast (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 3), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit2 = Physics.Raycast (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 13), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit3 = Physics.Raycast (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 8), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
 
 		// Draw the raycast
-		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 3), Vector2.right * 100, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 13), Vector2.right * 100, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector2 (transform.position.x + 1.6f, transform.position.y + 8), Vector2.right * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 3), Vector3.back * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 13), Vector3.back * 100, Color.red, Mathf.Infinity);
+		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 8), Vector3.back * 100, Color.red, Mathf.Infinity);
 
 		// Is the door open?
 		if (open) {
@@ -73,9 +73,9 @@ public class verticalDoor : MonoBehaviour {
 			// Determines the direction the player is facing and sets which way
 			// the door should open
 			if ((hit1.collider != null || hit2.collider != null || hit3.collider != null)) {
-				openRot = Quaternion.Euler (0f, 0f, openDoor);
+				openRot = Quaternion.Euler (0f, openDoor, 0f);
 			} else {
-				openRot = Quaternion.Euler (0f, 0f, -openDoor);
+				openRot = Quaternion.Euler (0f, -openDoor, 0f);
 			}
 
 			// If the door is open then the next time
@@ -107,14 +107,14 @@ public class verticalDoor : MonoBehaviour {
 	}
 
 	// Is the player in the vicinity of the door?
-	void OnTriggerEnter2D (Collider2D col) {
+	void OnTriggerEnter (Collider col) {
 		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = true;
 		}
 	}
 
 	// Has the player left the vicinity of the door?
-	void OnTriggerExit2D (Collider2D col) {
+	void OnTriggerExit (Collider col) {
 		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = false;
 		}

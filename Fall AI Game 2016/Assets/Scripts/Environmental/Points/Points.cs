@@ -18,7 +18,7 @@ public class Points : MonoBehaviour {
         worth = 1;
 	}
 
-    void OnTriggerEnter2D (Collider2D col) {
+    void OnTriggerEnter (Collider col) {
         if (col.tag == "Player") {
             col.GetComponent<PlayerController> ().incrementScore (worth);   // Increment the player's score and update the text
 			sfxMan.ItemPickup.Play ();

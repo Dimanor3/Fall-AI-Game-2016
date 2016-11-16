@@ -6,9 +6,12 @@ public class soundMade : MonoBehaviour {
 
 	private float distance, 				// The distance between the guard and the sound made
 				  distSoundTravel, 			// The distance the sound will travel
-				  rateOfObjectDecay;		// The amount of decay that an object that is in the way causes
+				  rateOfObjectDecay,		// The amount of decay that an object that is in the way causes
+				  guardBuffer,				// Amount of decay caused by guards
+				  wallBuffer,				// Amount of decay caused by walls
+				  doorBuffer;				// Amount of decay caused by doors
 
-	private RaycastHit2D[] hit;
+	private RaycastHit[] hit;
 
 	private Vector3 rand;
 
@@ -20,6 +23,9 @@ public class soundMade : MonoBehaviour {
 	void Start () {
 		// Instantiate all necessary variables
 		rateOfObjectDecay = 2f;
+		guardBuffer = 2f;
+		wallBuffer = 10f;
+		doorBuffer = 10f;
 	}
 
 	/// <summary>
@@ -28,16 +34,30 @@ public class soundMade : MonoBehaviour {
 	/// <param name="soundLevel">The amount of sound said object makes.</param>
 	/// <param name="obj">Object that the sound is being emitted from.</param>
 	/// <returns>Returns a randomized Vector2 position to the guard for pathing.</returns>
-	public Vector2 makeSound (float soundLevel, GameObject obj) {
+	public Vector3 makeSound (float soundLevel, GameObject obj) {
 		foreach (GameObject g in guardList) {
 			// Distance between the sounds original location and the guard.
-			distance = Vector2.Distance (obj.transform.position, g.transform.position);
+			distance = Vector3.Distance (obj.transform.position, g.transform.position);
 
 			// List of all objects hit by a raycast.
 			// In theory the last object to be hit by the raycast is the guard.
-			hit = Physics2D.RaycastAll (obj.transform.position, g.transform.position, distance);
+			hit = Physics.RaycastAll (obj.transform.position, g.transform.position, distance);
 
-			distSoundTravel = soundLevel - (rateOfObjectDecay * (hit.Length - 1));
+			distSoundTravel = soundLevel;
+
+			foreach (GameObject h in hit) {
+				if (h.CompareTag ("Guard")) {
+					distSoundTravel -= rateOfObjectDecay * guardBuffer;
+				} 
+
+				if (h.CompareTag ("Wall")) {
+					distSoundTravel -= rateOfObjectDecay * wallBuffer;
+				}
+
+				if (h.CompareTag ("Door")) {
+					distSoundTravel -= rateOfObjectDecay * doorBuffer;
+				}
+			}
 
 			if (distSoundTravel <= 0) {
 				distSoundTravel = 0;
@@ -50,6 +70,6 @@ public class soundMade : MonoBehaviour {
 			}
 		}
 
-		return Vector2.zero;
+		return Vector3.zero;
 	}
 }

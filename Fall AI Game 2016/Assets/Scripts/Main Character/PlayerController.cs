@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
     // Stuff for hidding the player
     private Hidding hidding;
     [SerializeField] private bool hidden;									// Checks to see if hte player is currently hidding or not
-    [SerializeField] private Vector2 hiddingSpotLocation;					// Holds the hidding spots location so that the player can move there
+    [SerializeField] private Vector3 hiddingSpotLocation;					// Holds the hidding spots location so that the player can move there
 
     // Player score
     private int score;                                                      // Stores the player's score
@@ -108,9 +108,9 @@ public class PlayerController : MonoBehaviour {
 
         if (!hidden) {
             // Calculations for main characters movements
-            Vector2 moveHorizontal = transform.right * horizontalMovement;
-            Vector2 moveVertical = transform.up * verticalMovement;
-            Vector2 movement = (moveHorizontal + moveVertical).normalized;
+            Vector3 moveHorizontal = transform.right * horizontalMovement;
+			Vector3 moveVertical = transform.forward * verticalMovement;
+            Vector3 movement = (moveHorizontal + moveVertical).normalized;
 
 			if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
 				if (run == 0 && crawl == 0) {
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour {
         } else {
             // This is used to move the player into the
             // hidding spot
-            Vector2 moveToPos = hiddingSpotLocation - (Vector2)transform.position;
+            Vector3 moveToPos = hiddingSpotLocation - transform.position;
 
             if (moveToPos.magnitude > moveSpeed) {
                 moveToPos.Normalize ();
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour {
     /// Checks to see if the player has entered a certain space.
 	/// </summary>
 	/// <param name="col">The collider of the object that has collided with the player.</param>
-    void OnTriggerEnter2D (Collider2D col) {
+    void OnTriggerEnter (Collider col) {
         // Checks to see if the player is in the range
         // of a hidding spot
         if (col.CompareTag ("Hidding Spot")) {

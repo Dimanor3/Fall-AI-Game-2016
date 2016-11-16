@@ -47,13 +47,13 @@ public class Hidding : MonoBehaviour {
 		return hidding;
 	}
 
-	void OnTriggerEnter2D (Collider2D col) {
+	void OnTriggerEnter (Collider col) {
 		if (col.CompareTag("Hidding Spot")) {
 			enter = true;
 		}
 	}
 
-	void OnTriggerExit2D (Collider2D col) {
+	void OnTriggerExit (Collider col) {
 		if (col.CompareTag("Hidding Spot")) {
 			enter = false;
 		}

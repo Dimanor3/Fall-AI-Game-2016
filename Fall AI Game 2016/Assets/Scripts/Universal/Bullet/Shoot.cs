@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
-
 	[SerializeField] private SFXManager sfxMan;		// Get access to the SFXManager
 
 	[SerializeField] private GameObject bullet;     // GameObject of the bullet
