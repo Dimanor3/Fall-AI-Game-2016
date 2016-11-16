@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010348021150}
-  - 114: {fileID: 114000013853235184}
   - 65: {fileID: 65000011539308208}
+  - 114: {fileID: 114000011101068504}
   m_Layer: 0
   m_Name: VerticalDoor
   m_TagString: Door
@@ -133,7 +133,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114000013853235184
+--- !u!114 &114000011101068504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010104502662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e30c50df466bc40bdc017c61e12b43, type: 3}
+  m_Script: {fileID: 11500000, guid: 3da130a67d7394c46b2b559975704d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   openDoor: 0
