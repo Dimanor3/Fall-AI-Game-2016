@@ -45,16 +45,16 @@ public class soundMade : MonoBehaviour {
 
 			distSoundTravel = soundLevel;
 
-			foreach (GameObject h in hit) {
-				if (h.CompareTag ("Guard")) {
+			foreach (RaycastHit h in hit) {
+				if (h.collider.gameObject.CompareTag ("Guard")) {
 					distSoundTravel -= rateOfObjectDecay * guardBuffer;
 				} 
 
-				if (h.CompareTag ("Wall")) {
+				if (h.collider.gameObject.CompareTag ("Wall")) {
 					distSoundTravel -= rateOfObjectDecay * wallBuffer;
 				}
 
-				if (h.CompareTag ("Door")) {
+				if (h.collider.gameObject.CompareTag ("Door")) {
 					distSoundTravel -= rateOfObjectDecay * doorBuffer;
 				}
 			}
