@@ -29,10 +29,10 @@ public class CameraController : MonoBehaviour {
         // Check to see if the player wants to look ahead.
         if (Input.GetAxis ("Look Ahead") > 0) {
             // Update the camera's new expected position.
-            newCameraPosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
+			newCameraPosition = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Camera.main.nearClipPlane, Input.mousePosition.y));
 
             // Fix the new camera's z position.
-            newCameraPosition.z = -10f;
+            newCameraPosition.y = 45f;
 
             // Set the direction the camera needs to move in.
             dir = newCameraPosition - this.transform.position;
@@ -41,13 +41,13 @@ public class CameraController : MonoBehaviour {
             transform.Translate (dir * cameraSpeed * Time.deltaTime);
 
             // Clamp the position so that it doesn't move too far out.
-            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), Mathf.Clamp (transform.localPosition.y, -yCap, yCap), -10f);
+            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 45f, Mathf.Clamp (transform.localPosition.z, -yCap, yCap));
         }
 
         // Reset the position so that the camera continues to
         // follow the player.
         if (Input.GetAxis ("Look Ahead") <= 0) {
-            transform.localPosition = Vector3.Lerp (transform.localPosition, new Vector3 (0f, 0f, -10f), .05f);
+            transform.localPosition = Vector3.Lerp (transform.localPosition, new Vector3 (0f, 45f, -10f), .05f);
         }
 	}
 }

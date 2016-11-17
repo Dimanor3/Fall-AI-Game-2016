@@ -16,15 +16,15 @@ public class tileMap : MonoBehaviour {
 		column = 25;
 
 		// Initialize the height and width of each tile
-		height = tiles.transform.localScale.y * 10;
-		width = tiles.transform.localScale.x * 10;
+		height = tiles.transform.localScale.y;
+		width = tiles.transform.localScale.x;
 
 		//print ("Width: " + width + " Height: " + height);
 
 		// Initialize the board
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
-				Instantiate(tiles, new Vector3 ((float) i * width + gameObject.transform.localPosition.x + (width / 2), 1f, (float) j * height + gameObject.transform.localPosition.y + (height / 2)), Quaternion.identity);
+				Instantiate(tiles, new Vector3 ((float) i * width + gameObject.transform.localPosition.x + (width / 2), -15f, (float) j * height + gameObject.transform.localPosition.y + (height / 2)), Quaternion.identity);
 				//print ("i: " + i + " j: " + j + " spawn coordinate x: " + ((float) i * width + gameObject.transform.localPosition.x + (width / 2)) + " spawn coordinate y: " + ((float) j * height + gameObject.transform.localPosition.y + (height / 2)));
 			}
 		}
