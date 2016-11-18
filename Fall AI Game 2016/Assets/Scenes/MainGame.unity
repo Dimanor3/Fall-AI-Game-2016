@@ -5047,7 +5047,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012125623906, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011434192024, guid: 811fe442b81dece49a4ec71796a7b1e4,
         type: 2}
@@ -7927,7 +7927,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 98.65, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!108 &1713436501
 Light:
   m_ObjectHideFlags: 0
@@ -9354,7 +9354,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
