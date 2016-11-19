@@ -68,8 +68,8 @@ public class Node {
 		//Draw Node on screen for debugging purposes
 		Debug = GameObject.Instantiate (Resources.Load ("Node")) as GameObject; 
 		Debug.transform.position = Position;
-		Debug.GetComponent<Debug> ().X = X;
-		Debug.GetComponent<Debug> ().Y = Y;
+		Debug.GetComponent<Debugs> ().X = X;
+		Debug.GetComponent<Debugs> ().Y = Y;
 	}
 
 	/// <summary>

@@ -46,7 +46,7 @@ public class PlayerMotor : MonoBehaviour {
 	/// <summary>
 	/// Set the players movement
 	/// </summary>
-	public Vector2 Movement {
+	public Vector3 Movement {
 		set {
 			movement = value;
 		}

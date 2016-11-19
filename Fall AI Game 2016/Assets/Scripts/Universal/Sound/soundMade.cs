@@ -64,10 +64,10 @@ public class soundMade : MonoBehaviour {
 			}
 
 			rand = Random.insideUnitCircle * 3;
-			print ("Distance: " + distance + " sound travel distance " + distSoundTravel);
+			/*print ("Distance: " + distance + " sound travel distance " + distSoundTravel);
 			if (distance <= distSoundTravel) {
 				print ("Testing random point: " + (obj.transform.position + rand));
-			}
+			}*/
 		}
 
 		return Vector3.zero;

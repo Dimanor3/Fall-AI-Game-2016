@@ -4279,30 +4279,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1000012258406240, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011841100946, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 11.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011841100946, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011841100946, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013456326226, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013456326226, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fbc3a653c6c74b479b4a2f899e323e2, type: 2}
   m_IsPrefabParent: 0
@@ -6506,18 +6482,6 @@ Prefab:
     - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.700001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.20000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010348021150, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3e2052b7dbe06949b74d961c2c631b5, type: 2}

@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour {
             // Calculations for main characters movements
             Vector3 moveHorizontal = transform.right * horizontalMovement;
 			Vector3 moveVertical = transform.forward * verticalMovement;
-            Vector3 movement = (moveHorizontal + moveVertical).normalized;
+			Vector3 movement = (moveHorizontal + moveVertical).normalized;
 
 			if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
 				if (run == 0 && crawl == 0) {

@@ -73,9 +73,9 @@ public class verticalDoor : MonoBehaviour {
 		}
 
 		// Draw the raycast
-		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 3), Vector3.back * 100, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 13), Vector3.back * 100, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 8), Vector3.back * 100, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 3), Vector3.back * 100, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 13), Vector3.back * 100, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 1.6f, 0f, transform.position.y + 8), Vector3.back * 100, Color.red, Mathf.Infinity);
 
 		// Is the door open?
 		if (open) {
