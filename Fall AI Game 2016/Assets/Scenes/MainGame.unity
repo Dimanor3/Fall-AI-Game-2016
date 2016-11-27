@@ -4308,7 +4308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010816393474, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010816393474, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
       propertyPath: m_LocalRotation.y
@@ -4320,19 +4320,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010816393474, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010816393474, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1000013535715008, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
-      propertyPath: m_Name
-      value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010816393474, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa29a5e1fde878d4fbdf3a68a29238e2, type: 2}
@@ -5018,7 +5014,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012125623906, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -348.7
+      value: -350.8
       objectReference: {fileID: 0}
     - target: {fileID: 4000012125623906, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5026,7 +5022,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012125623906, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -20.1
+      value: -16.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000012125623906, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5063,11 +5059,6 @@ Prefab:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1391425419}
-    - target: {fileID: 54000012930340876, guid: 811fe442b81dece49a4ec71796a7b1e4,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 811fe442b81dece49a4ec71796a7b1e4, type: 2}
   m_IsPrefabParent: 0
@@ -5615,7 +5606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1154686057
 Transform:
   m_ObjectHideFlags: 0
@@ -7769,7 +7760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012176849200, guid: c430d92386003ae4b972085e19194b3d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012176849200, guid: c430d92386003ae4b972085e19194b3d, type: 2}
       propertyPath: m_LocalRotation.y
@@ -7781,7 +7772,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012176849200, guid: c430d92386003ae4b972085e19194b3d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012176849200, guid: c430d92386003ae4b972085e19194b3d, type: 2}
       propertyPath: m_RootOrder
@@ -7790,10 +7781,6 @@ Prefab:
     - target: {fileID: 1000011255960732, guid: c430d92386003ae4b972085e19194b3d, type: 2}
       propertyPath: m_Name
       value: Hidding Spot (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012176849200, guid: c430d92386003ae4b972085e19194b3d, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c430d92386003ae4b972085e19194b3d, type: 2}

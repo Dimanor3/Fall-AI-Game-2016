@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 114000010222802240}
   - 114: {fileID: 114000012767332096}
   - 54: {fileID: 54000012930340876}
+  - 135: {fileID: 135000013296041242}
   m_Layer: 8
   m_Name: Main Character
   m_TagString: Player
@@ -94,10 +95,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012187568420}
-  - 135: {fileID: 135000010060058532}
   - 23: {fileID: 23000011184239242}
   - 33: {fileID: 33000010542712000}
-  - 135: {fileID: 135000013906140272}
   m_Layer: 8
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -112,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012166206552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 20.8, z: 10}
+  m_LocalPosition: {x: 0, y: 19.5, z: 43.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -125,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011706793036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.76001, y: 17.9, z: 10}
+  m_LocalPosition: {x: 43.8, y: 14.3, z: 34.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -138,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010424034780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -348.7, y: 0, z: -20.1}
+  m_LocalPosition: {x: -350.8, y: 0, z: -16.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -152,7 +151,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013760051508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,7 +314,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!81 &81000012012103522
 AudioListener:
@@ -477,27 +476,15 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010620462344}
   m_Enabled: 1
---- !u!135 &135000010060058532
+--- !u!135 &135000013296041242
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013760051508}
+  m_GameObject: {fileID: 1000010424034780}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135000013906140272
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013760051508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 4.990631
   m_Center: {x: 0, y: 0, z: 0}
