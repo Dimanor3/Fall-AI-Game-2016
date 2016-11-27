@@ -50,32 +50,32 @@ public class horizontalDoor : MonoBehaviour {
 		float useValue = Input.GetAxisRaw ("Use");
 
 		// Used to see if the player is on the right side of the door
-		RaycastHit hit1;// = Physics.Raycast (new Vector3 (transform.position.x + 1, 0f, transform.position.y - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
-		RaycastHit hit2;// = Physics.Raycast (new Vector3 (transform.position.x + 8.15f, 0f, transform.position.y - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
-		RaycastHit hit3;// = Physics.Raycast (new Vector3 (transform.position.x + 15, 0f, transform.position.y - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit1;// = Physics.Raycast (new Vector3 (transform.position.x + 1, 0f, transform.position.z - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit2;// = Physics.Raycast (new Vector3 (transform.position.x + 8.15f, 0f, transform.position.z - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
+		RaycastHit hit3;// = Physics.Raycast (new Vector3 (transform.position.x + 15, 0f, transform.position.z - .9f), Vector3.back, Mathf.Infinity, 1 << LayerMask.NameToLayer ("Character"));
 
-		if (Physics.Raycast(new Vector3 (transform.position.x + 1, 0f, transform.position.y - .9f), Vector3.back, out hit1, Mathf.Infinity)) {
+		if (Physics.Raycast(new Vector3 (transform.position.x + 1, 0f, transform.position.z - .9f), Vector3.back, out hit1, Mathf.Infinity)) {
 			if (!hit1.collider.gameObject.CompareTag ("Player")) {
 				hit1 = new RaycastHit ();
 			}
 		}
 
-		if (Physics.Raycast(new Vector3 (transform.position.x + 8.15f, 0f, transform.position.y - .9f), Vector3.back, out hit2, Mathf.Infinity)) {
+		if (Physics.Raycast(new Vector3 (transform.position.x + 8.15f, 0f, transform.position.z - .9f), Vector3.back, out hit2, Mathf.Infinity)) {
 			if (!hit2.collider.gameObject.CompareTag ("Player")) {
 				hit2 = new RaycastHit ();
 			}
 		}
 
-		if (Physics.Raycast(new Vector3 (transform.position.x + 15, 0f, transform.position.y - .9f), Vector3.back, out hit3, Mathf.Infinity)) {
+		if (Physics.Raycast(new Vector3 (transform.position.x + 15, 0f, transform.position.z - .9f), Vector3.back, out hit3, Mathf.Infinity)) {
 			if (!hit3.collider.gameObject.CompareTag ("Player")) {
 				hit3 = new RaycastHit ();
 			}
 		}
 
 		// Draw the raycast
-		//Debug.DrawRay (new Vector3 (transform.position.x + 1, 0f, transform.position.y - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector3 (transform.position.x + 8.15f, 0f, transform.position.y - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
-		//Debug.DrawRay (new Vector3 (transform.position.x + 15, 0f, transform.position.y - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 1, 0f, transform.position.z - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 8.15f, 0f, transform.position.z - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
+		Debug.DrawRay (new Vector3 (transform.position.x + 15, 0f, transform.position.z - .9f), Vector3.back * 100f, Color.red, Mathf.Infinity);
 
 		// Is the door open?
 		if (open) {
