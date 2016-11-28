@@ -19,7 +19,7 @@ public class Points : MonoBehaviour {
 	}
 
     void OnTriggerEnter (Collider col) {
-        if (col.tag == "Player") {
+		if (col.CompareTag ("Player")) {
             col.GetComponent<PlayerController> ().incrementScore (worth);   // Increment the player's score and update the text
 			sfxMan.ItemPickup.Play ();
             gameObject.SetActive (false);                                   // Turn off the gameObject point
