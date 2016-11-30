@@ -6,6 +6,7 @@ public class Points : MonoBehaviour {
 	[SerializeField] private SFXManager sfxMan;								// Get access to the SFXManager
 
     private int worth;  // The player's score
+	public float spinSpeed = 50f;
 
 	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
@@ -16,6 +17,11 @@ public class Points : MonoBehaviour {
 	void Start () {
         // Instantiate score
         worth = 1;
+	}
+
+	void Update ()
+	{
+		transform.Rotate(Vector3.right, spinSpeed * Time.deltaTime);
 	}
 
     void OnTriggerEnter (Collider col) {
