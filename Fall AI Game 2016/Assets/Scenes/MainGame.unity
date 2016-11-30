@@ -576,7 +576,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!114 &65998462 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000013739971350, guid: ee627b459a27bb9478386382e3f8ee91,
@@ -913,7 +913,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010481213758, guid: b131d3c181a6d1c42b80a806ce31d3dd, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b131d3c181a6d1c42b80a806ce31d3dd, type: 2}
@@ -3543,7 +3543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013016168486, guid: 313e85a4cafebe14791fd4f108aff8ab, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 313e85a4cafebe14791fd4f108aff8ab, type: 2}
@@ -3657,7 +3657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012272417478, guid: 0e116da1e8a5b23429c90611f1ac771f, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4000012272417478, guid: 0e116da1e8a5b23429c90611f1ac771f, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7929,7 +7929,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 98.65, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!108 &1713436501
 Light:
   m_ObjectHideFlags: 0
@@ -9447,4 +9447,4 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
