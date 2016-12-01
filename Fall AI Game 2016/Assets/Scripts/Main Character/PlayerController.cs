@@ -355,7 +355,7 @@ public class PlayerController : MonoBehaviour {
 
         playerScoreTextMesh.characterSize = Mathf.Lerp (playerScoreTextMesh.characterSize, .6f, .008f);
 
-        playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 0f, 15f), .01f);
+        playerScore.transform.localPosition = Vector3.Lerp (playerScore.transform.localPosition, new Vector3 (0f, 0f, 50f), .01f);
     }
 
 	/// <summary>

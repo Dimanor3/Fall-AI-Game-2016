@@ -44,15 +44,15 @@ public class CameraController : MonoBehaviour {
 
 			print ("POS: " + pos);
 
-			Vector3 move = new Vector3(pos.x * 100f, 45f, pos.z * cameraSpeed);
+			Vector3 move = new Vector3(pos.x * 200f, 0f, pos.z * cameraSpeed);
 
 			print ("MOVE: " + move);
 
-			move.y = 45f;
+			move.y = 0f;
 
 			transform.Translate(move * Time.deltaTime, Space.Self);
 
-			transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 45f, Mathf.Clamp (transform.localPosition.z, -yCap, yCap));
+			transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 0f, Mathf.Clamp (transform.localPosition.z, -yCap, yCap));
 
 
 			/*
@@ -75,7 +75,7 @@ public class CameraController : MonoBehaviour {
         // Reset the position so that the camera continues to
         // follow the player.
         if (Input.GetAxis ("Look Ahead") <= 0) {
-            transform.localPosition = Vector3.Lerp (transform.localPosition, new Vector3 (0f, 45f, -10f), .05f);
+            transform.localPosition = Vector3.Lerp (transform.localPosition, new Vector3 (0f, 0f, 0f), .05f);
 			panning = false;
         }
 	}
