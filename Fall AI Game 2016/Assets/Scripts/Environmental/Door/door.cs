@@ -20,6 +20,9 @@ public class door : MonoBehaviour {
 	// Used to treats the Input.GetAxisRaw("Use") as GetButtonDown
 	private bool use;
 
+	// Determines whether the player, or guard, is infront of or behind the door
+	private bool infrontOf;
+
 	[SerializeField] private SFXManager sfxMan;	// Get access to the SFXManager
 
 	void Awake () {
@@ -39,6 +42,7 @@ public class door : MonoBehaviour {
 		open = false;
 		enter = false;
 		use = false;
+		infrontOf = false;
 
 		// Initialize both the default and open rotations
 		defaultRot = transform.rotation;
@@ -62,7 +66,11 @@ public class door : MonoBehaviour {
 
 		// Makes sure the player can't spam the use button
 		if (useValue != 0 && !use && enter) {
-			openRot = Quaternion.Euler (0f, openDoor, 0f) * defaultRot;
+			if (!infrontOf) {
+				openRot = Quaternion.Euler (0f, openDoor, 0f) * defaultRot;
+			} else {
+				openRot = Quaternion.Euler (0f, -openDoor, 0f) * defaultRot;
+			}
 
 			// If the door is open then the next time
 			// the player interacts with it it will
@@ -96,6 +104,14 @@ public class door : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = true;
+
+			print ("TEST: " + Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position));
+
+			if (Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position) < 0) {
+				infrontOf = false;
+			} else {
+				infrontOf = true;
+			}
 		}
 	}
 

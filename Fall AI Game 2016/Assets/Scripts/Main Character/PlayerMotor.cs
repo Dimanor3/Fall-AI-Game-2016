@@ -64,7 +64,7 @@ public class PlayerMotor : MonoBehaviour {
 	/// <summary>
 	/// Set the AI Movement for when the player goes into hiding
 	/// </summary>
-	public Vector2 AiMovement {
+	public Vector3 AiMovement {
 		set {
 			aiMovement = value;
 		}
