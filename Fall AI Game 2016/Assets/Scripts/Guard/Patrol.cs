@@ -20,13 +20,11 @@ public class Patrol : MonoBehaviour {
 	private Vector3 direction;
 	private Vector3 playerPosition;
 	private float angle;
-	private Shoot gun;
 
 	void Awake () {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody> ();
 		agent = GetComponent<NavMeshAgent> ();
-		gun = GetComponentInChildren<Shoot> ();
 	}
 
 
@@ -42,9 +40,7 @@ public class Patrol : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (detected) {
-			//print(transform.position);
-			agent.Stop();
-			print ("hello");
+			//agent.Stop();
 			Pursue ();
 			//This is the 2d stuff
 			//angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
@@ -60,11 +56,12 @@ public class Patrol : MonoBehaviour {
 
 	void Pursue() {
 		playerPosition = GameObject.FindWithTag ("Player").transform.position;
-		print (playerPosition);
-		direction =  playerPosition-transform.position;
-		print ("Direction: " + direction);
+		//print (playerPosition);
+		direction =  playerPosition - transform.position;
+		//print ("Direction: " + direction);
 		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+		agent.destination = playerPosition;
 	}
 
 	void GoToNextPoint() {
@@ -82,16 +79,18 @@ public class Patrol : MonoBehaviour {
 			timer = maxTimer;
 		}
 	}
-
+		
 	void OnTriggerEnter (Collider col) {
-		if (col.CompareTag ("Player")) {
+		if (col.gameObject.tag == ("Player")) {
 			detected = true;
+			print ("DETECTED");
 		}
 	}
 
 	void OnTriggerExit (Collider col) {
-		if (col.CompareTag ("Player")) {
+		if (col.GetComponent<Collider>().CompareTag ("Player")) {
 			detected = false;
+			print ("UNDETECTED");
 		}
 	}
 }
