@@ -6,7 +6,6 @@ public class Shoot : MonoBehaviour {
 
 	[SerializeField] private GameObject bullet;     // GameObject of the bullet
 
-
 	[SerializeField] private soundMade soundMaker;		// Used to make sounds that guards can hear
 	private float soundLevel;							// Amount of sound made by door
 

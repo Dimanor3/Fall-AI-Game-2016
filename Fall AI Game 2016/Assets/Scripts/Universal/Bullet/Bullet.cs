@@ -8,18 +8,21 @@ public class Bullet : MonoBehaviour {
 
 	[SerializeField] private Rigidbody rb;			// Bullet's rigidbody
 
+	void Awake () {
+		rb = gameObject.GetComponent <Rigidbody> ();
+	}
+
 	void Start () {
 		// Initialize all necessary variables
 		firingSpeed = 500f;
 		damage = 10;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		rb.AddForce (transform.forward * firingSpeed);		// 	Move bullet
+	void FixedUpdate () {
+		rb.AddForce (transform.forward * firingSpeed);		// Move Bullet
 	}
 
-	void OnCollisionEnter (Collision col) {
+	void OnTriggerEnter (Collider col) {
 		// If hit player deal damage
 		if (col.gameObject.tag == "Player") {
 			col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
