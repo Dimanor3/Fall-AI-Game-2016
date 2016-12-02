@@ -177,6 +177,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000010850251780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010070085378}
+  - 114: {fileID: 114000012578724790}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000010940065632
 GameObject:
   m_ObjectHideFlags: 1
@@ -1117,6 +1133,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4000010070085378
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010850251780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.373, z: 0.635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011917516248}
+  m_RootOrder: 2
 --- !u!4 &4000010091432576
 Transform:
   m_ObjectHideFlags: 1
@@ -1606,13 +1635,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011278350870}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -300, y: -5, z: 260}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.354719, y: -0.85, z: 21.807331}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children:
   - {fileID: 4000010247543568}
   - {fileID: 4000011415662770}
+  - {fileID: 4000010070085378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000012092719462
@@ -2225,6 +2255,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114000012578724790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010850251780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7835cc556a0e0042a14ea224a46bb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxMan: {fileID: 0}
+  bullet: {fileID: 1000010249606814, guid: 60724469cb779ab47aa507ebcda4282f, type: 2}
+  soundMaker: {fileID: 0}
 --- !u!114 &114000012687759932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2261,7 +2305,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8466912
+  m_Radius: 3.3
   m_Height: 10.424975
   m_Direction: 2
   m_Center: {x: 0, y: 0.91, z: 4.74}
