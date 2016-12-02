@@ -61,7 +61,8 @@ public class Buttons : MonoBehaviour {
 		playButtonClick ();
 
 		Time.timeScale = 1f;
-		SceneManager.LoadScene (1);
+		Application.Quit();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		Time.timeScale = 1f;
     }
 
