@@ -31,7 +31,7 @@ public class Patrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		maxTimer = timer = 50;
+		maxTimer = timer = 25;
 		agent.autoBraking = false;
 		//GoToNextPoint ();
 	}

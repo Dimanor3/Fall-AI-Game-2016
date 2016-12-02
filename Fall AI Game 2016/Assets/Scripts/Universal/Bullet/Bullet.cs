@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour {
 
 	void Start () {
 		// Initialize all necessary variables
-		firingSpeed = 500f;
+		firingSpeed = 1000f;
 		damage = 10;
 	}
 
