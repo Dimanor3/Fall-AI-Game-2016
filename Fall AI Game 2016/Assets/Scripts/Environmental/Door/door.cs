@@ -38,8 +38,6 @@ public class door : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 4;
-
 		// Initialize all necessary variables
 		soundLevel = 100f;
 		openDoor = 110f;
@@ -99,6 +97,8 @@ public class door : MonoBehaviour {
 			}
 
 			use = true;
+
+			guard = false;
 		}
 
 		// Make sure that use is turned off after use
@@ -121,8 +121,7 @@ public class door : MonoBehaviour {
 			}
 		}
 
-		if (col.CompareTag ("Guard")) {
-			print ("I'm working too!");
+		if (col.CompareTag ("Guard") && !col.isTrigger) {
 			guard = true;
 
 			if (Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position) < 0) {
@@ -135,15 +134,12 @@ public class door : MonoBehaviour {
 
 	// Has the player left the vicinity of the door?
 	void OnTriggerExit (Collider col) {
-		print ("TEST: " + col.tag);
-
 		if (col.CompareTag ("Player")) {
 			enter = false;
 		}
 
-		if (col.CompareTag ("Guard")) {
-			print ("I'm working!");
-			guard = false;
+		if (col.CompareTag ("Guard") && !col.isTrigger) {
+			guard = true;
 		}
 	}
 

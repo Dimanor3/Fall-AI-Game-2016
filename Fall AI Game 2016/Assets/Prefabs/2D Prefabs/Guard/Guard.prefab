@@ -276,12 +276,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011917516248}
   - 95: {fileID: 95000012053943106}
-  - 64: {fileID: 64000011313955290}
   - 114: {fileID: 114000012687759932}
   - 114: {fileID: 114000010808705002}
   - 195: {fileID: 195000011893061592}
   - 136: {fileID: 136000013550511764}
   - 136: {fileID: 136000011446760298}
+  - 54: {fileID: 54000010157133230}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Guard
@@ -2161,18 +2161,21 @@ Transform:
   - {fileID: 4000011134094940}
   m_Father: {fileID: 4000012704320262}
   m_RootOrder: 0
---- !u!64 &64000011313955290
-MeshCollider:
+--- !u!54 &54000010157133230
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011278350870}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95000012053943106
 Animator:
   serializedVersion: 3
