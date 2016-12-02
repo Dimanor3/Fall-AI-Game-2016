@@ -14,6 +14,9 @@ public class door : MonoBehaviour {
 	// Let's us know whether the door is open or not
 	[SerializeField] private bool open;
 
+	// Used to determine if a guard is close by to open, and close, the doors.
+	private bool guard;
+
 	// Used to reactivate the trigger once it's been activated
 	private bool enter;
 
@@ -35,6 +38,8 @@ public class door : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 4;
+
 		// Initialize all necessary variables
 		soundLevel = 100f;
 		openDoor = 110f;
@@ -65,7 +70,7 @@ public class door : MonoBehaviour {
 		}
 
 		// Makes sure the player can't spam the use button
-		if (useValue != 0 && !use && enter) {
+		if (useValue != 0 && !use && enter || guard) {
 			if (!infrontOf) {
 				openRot = Quaternion.Euler (0f, openDoor, 0f) * defaultRot;
 			} else {
@@ -76,13 +81,17 @@ public class door : MonoBehaviour {
 			// the player interacts with it it will
 			// close and vice versa
 			if (open) {
-				soundMaker.makeSound (soundLevel, this.gameObject);
+				if (!guard) {
+					soundMaker.makeSound (soundLevel, this.gameObject);
+				}
 
 				playCloseDoorSFX ();
 
 				open = false;
 			} else {
-				soundMaker.makeSound (soundLevel, this.gameObject);
+				if (!guard) {
+					soundMaker.makeSound (soundLevel, this.gameObject);
+				}
 
 				playOpenDoorSFX ();
 
@@ -102,8 +111,19 @@ public class door : MonoBehaviour {
 
 	// Is the player in the vicinity of the door?
 	void OnTriggerEnter (Collider col) {
-		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
+		if (col.CompareTag ("Player")) {
 			enter = true;
+
+			if (Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position) < 0) {
+				infrontOf = false;
+			} else {
+				infrontOf = true;
+			}
+		}
+
+		if (col.CompareTag ("Guard")) {
+			print ("I'm working too!");
+			guard = true;
 
 			if (Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position) < 0) {
 				infrontOf = false;
@@ -115,8 +135,15 @@ public class door : MonoBehaviour {
 
 	// Has the player left the vicinity of the door?
 	void OnTriggerExit (Collider col) {
-		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
+		print ("TEST: " + col.tag);
+
+		if (col.CompareTag ("Player")) {
 			enter = false;
+		}
+
+		if (col.CompareTag ("Guard")) {
+			print ("I'm working!");
+			guard = false;
 		}
 	}
 

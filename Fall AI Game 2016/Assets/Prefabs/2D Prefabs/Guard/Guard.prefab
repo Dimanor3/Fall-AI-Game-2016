@@ -281,6 +281,7 @@ GameObject:
   - 114: {fileID: 114000010808705002}
   - 195: {fileID: 195000011893061592}
   - 136: {fileID: 136000013550511764}
+  - 136: {fileID: 136000011446760298}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Guard
@@ -1605,10 +1606,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011278350870}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -400, y: -5, z: 145}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -300, y: -5, z: 260}
   m_LocalScale: {x: 6, y: 6, z: 6}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children:
   - {fileID: 4000010247543568}
   - {fileID: 4000011415662770}
@@ -2248,6 +2249,19 @@ CapsuleCollider:
   m_Height: 0.93289673
   m_Direction: 0
   m_Center: {x: 0.33, y: 0, z: 0}
+--- !u!136 &136000011446760298
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011278350870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.8466912
+  m_Height: 10.424975
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.91, z: 4.74}
 --- !u!136 &136000012601147488
 CapsuleCollider:
   m_ObjectHideFlags: 1

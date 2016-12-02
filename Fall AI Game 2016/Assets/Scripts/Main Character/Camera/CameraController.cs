@@ -42,11 +42,7 @@ public class CameraController : MonoBehaviour {
 		if (panning) {
 			Vector3 pos = Camera.main.ScreenToViewportPoint(new Vector3 (Input.mousePosition.x, 0f, Input.mousePosition.y) - new Vector3 (mouseOrigin.x, 0f, mouseOrigin.y));
 
-			print ("POS: " + pos);
-
 			Vector3 move = new Vector3(pos.x * 200f, 0f, pos.z * cameraSpeed);
-
-			print ("MOVE: " + move);
 
 			move.y = 0f;
 
