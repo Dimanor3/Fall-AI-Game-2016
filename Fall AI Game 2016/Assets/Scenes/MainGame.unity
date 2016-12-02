@@ -16550,7 +16550,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011917516248, guid: 6372b31024542f14d9cfb913a3e99039, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 195000011893061592, guid: 6372b31024542f14d9cfb913a3e99039,
         type: 2}
@@ -62718,6 +62718,16 @@ Prefab:
       propertyPath: points.Array.data[19]
       value: 
       objectReference: {fileID: 73162444}
+    - target: {fileID: 114000012687759932, guid: 6372b31024542f14d9cfb913a3e99039,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000010157133230, guid: 6372b31024542f14d9cfb913a3e99039,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6372b31024542f14d9cfb913a3e99039, type: 2}
   m_IsPrefabParent: 0
