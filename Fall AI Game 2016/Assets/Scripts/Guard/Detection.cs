@@ -35,9 +35,17 @@ public class Detection : MonoBehaviour {
 		if (detected) {
 			playerPosition = GameObject.FindWithTag ("Player").transform.position;
 			direction = playerPosition - transform.position;
-			angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
-			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
-			transform.rotation = Quaternion.Slerp (q, transform.rotation, rotationSpeed * Time.deltaTime);
+
+			//kinda works for 3d but is still pretty messed up
+			transform.rotation = Quaternion.Euler(direction);
+
+			//This is the 2d stuff
+			//angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
+			//Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+			//transform.rotation = Quaternion.Slerp (q, transform.rotation, rotationSpeed * Time.deltaTime);
+
+
+
 		}
 	}
 	
