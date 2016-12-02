@@ -7,7 +7,7 @@ public class PlayerMotor : MonoBehaviour {
 	private Rigidbody rb;
 
 	// Movement stuff
-	private Vector3 movement;		// Move the player
+	[SerializeField] private Vector3 movement;		// Move the player
 	private Vector3 aiMovement;		// Move the player via AI
 
 	// Rotation stuff
@@ -41,6 +41,9 @@ public class PlayerMotor : MonoBehaviour {
 		} else {
 			movePlayer ();
 		}
+
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
 	}
 
 	/// <summary>
@@ -85,6 +88,7 @@ public class PlayerMotor : MonoBehaviour {
 	void movePlayer () {
 		if (movement != Vector3.zero) {
 			rb.MovePosition (rb.position + movement * Time.fixedDeltaTime);
+			//rb.AddForce (movement);// * Time.deltaTime);
 		}
 	}
 
