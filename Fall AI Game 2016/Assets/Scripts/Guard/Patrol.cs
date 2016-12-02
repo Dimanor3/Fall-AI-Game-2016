@@ -19,6 +19,7 @@ public class Patrol : MonoBehaviour {
 	//private Vector2 rotation;
 	private Vector3 direction;
 	private Vector3 playerPosition;
+	private Vector3 pointPosition;
 	private float angle;
 
 	void Awake () {
@@ -30,7 +31,7 @@ public class Patrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		timer = 50;
 		agent.autoBraking = false;
 		//GoToNextPoint ();
 	}
@@ -62,12 +63,17 @@ public class Patrol : MonoBehaviour {
 		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 		agent.destination = playerPosition;
+		agent.speed += 1;
 	}
 
 	void GoToNextPoint() {
 		if (points.Length == 0)
 			return;
-		agent.destination = points [destPoint].position;
+		pointPosition = points [destPoint].position;
+		direction = pointPosition - transform.position;
+		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
+		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+		agent.destination = pointPosition;
 
 		destPoint = (destPoint + 1) % points.Length;
 	}
