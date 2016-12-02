@@ -23,11 +23,13 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider col) {
-		// If hit player deal damage
-		if (col.gameObject.tag == "Player") {
-			col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
-		}
+		if (!col.isTrigger) {
+			// If hit player deal damage
+			if (col.gameObject.tag == "Player") {
+				col.gameObject.GetComponent <PlayerController> ().dealDamage (damage);
+			}
 
-		Destroy (gameObject);   				// Turn off gameObject
+			Destroy (gameObject);   				// Turn off gameObject
+		}
 	}
 }
