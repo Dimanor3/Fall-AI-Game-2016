@@ -61,7 +61,7 @@ public class Patrol : MonoBehaviour {
 	void Pursue() {
 		playerPosition = GameObject.FindWithTag ("Player").transform.position;
 		print (playerPosition);
-		direction = transform.position - playerPosition;
+		direction =  playerPosition-transform.position;
 		print ("Direction: " + direction);
 		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
