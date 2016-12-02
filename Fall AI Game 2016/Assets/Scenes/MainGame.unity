@@ -43880,6 +43880,18 @@ Prefab:
       propertyPath: sfxMan
       value: 
       objectReference: {fileID: 330485847}
+    - target: {fileID: 114000011775849052, guid: ee627b459a27bb9478386382e3f8ee91,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a01f181afa0219498d825499597aa3d,
+        type: 3}
+    - target: {fileID: 114000013396971388, guid: ee627b459a27bb9478386382e3f8ee91,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a01f181afa0219498d825499597aa3d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee627b459a27bb9478386382e3f8ee91, type: 2}
   m_IsPrefabParent: 0

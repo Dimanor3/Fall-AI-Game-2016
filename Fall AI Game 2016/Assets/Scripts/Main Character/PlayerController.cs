@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] private SFXManager sfxMan;								// Get access to the SFXManager
 
 	//status bars
-	[SerializeField] private StatusBar healthBar, staminaBar;
+	[SerializeField] private StatusBar healthBar;
+	[SerializeField] private StatusBar staminaBar;
 
 	// Player movement
 	private PlayerMotor motor;                                              // Used to move the player
