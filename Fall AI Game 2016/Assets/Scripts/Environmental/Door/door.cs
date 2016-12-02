@@ -105,8 +105,6 @@ public class door : MonoBehaviour {
 		if (col.CompareTag ("Player") || col.CompareTag ("Guard")) {
 			enter = true;
 
-			print ("TEST: " + Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position));
-
 			if (Vector3.Dot (transform.TransformDirection (Vector3.left), col.transform.position - transform.position) < 0) {
 				infrontOf = false;
 			} else {

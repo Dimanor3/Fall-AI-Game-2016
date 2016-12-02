@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] private soundMade soundMaker;							// Used to make sounds that guards can hear
 	private float soundLevelWalking, soundLevelRunning, soundLevelCrawling;	// Amount of sound made by door
 
+	// Test Stuff (delete if not deleted)
+	private Shoot shoot;
+
 	void Awake () {
 		// Instantiate the sfxMan to an object containing the SFXManager
 		sfxMan = FindObjectOfType<SFXManager> ();
@@ -57,6 +60,8 @@ public class PlayerController : MonoBehaviour {
 
 		// Initialize soundMaker
 		soundMaker = FindObjectOfType<soundMade> ();
+
+		shoot = gameObject.GetComponentInChildren<Shoot> ();
 	}
 
     // Use this for initialization
@@ -92,6 +97,10 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+		if (Input.GetKeyDown (KeyCode.M)) {
+			shoot.shoot ();
+		}
+
 		run = Input.GetAxis ("Run");
 
 		crawl = Input.GetAxis ("Crawl");

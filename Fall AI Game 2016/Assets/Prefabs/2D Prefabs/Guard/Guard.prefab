@@ -139,6 +139,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013578443304}
+  - 136: {fileID: 136000012601147488}
   m_Layer: 0
   m_Name: swat:LeftArm
   m_TagString: Untagged
@@ -279,6 +280,7 @@ GameObject:
   - 114: {fileID: 114000012687759932}
   - 114: {fileID: 114000010808705002}
   - 195: {fileID: 195000011893061592}
+  - 136: {fileID: 136000013550511764}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Guard
@@ -579,6 +581,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010199659862}
+  - 136: {fileID: 136000010474212120}
   m_Layer: 0
   m_Name: swat:RightArm
   m_TagString: Untagged
@@ -1031,7 +1034,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010716605842}
   - 137: {fileID: 137000011762093948}
-  - 136: {fileID: 136000013150342370}
   m_Layer: 0
   m_Name: Soldier_body
   m_TagString: Untagged
@@ -1603,8 +1605,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011278350870}
-  m_LocalRotation: {x: -0, y: 0.6700491, z: -0, w: -0.7423168}
-  m_LocalPosition: {x: -329.70786, y: -4.950001, z: 479.94275}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -330, y: -5, z: 475}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2217,19 +2219,45 @@ MonoBehaviour:
   target: {fileID: 0}
   rb: {fileID: 0}
   rotationSpeed: 0
---- !u!136 &136000013150342370
+--- !u!136 &136000010474212120
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013689389714}
+  m_GameObject: {fileID: 1000012075811400}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.97961175
-  m_Height: 2
-  m_Direction: 2
-  m_Center: {x: -0.000035264435, y: 0.78241897, z: -0}
+  m_Radius: 0.08744804
+  m_Height: 0.93289673
+  m_Direction: 0
+  m_Center: {x: 0.33, y: 0, z: 0}
+--- !u!136 &136000012601147488
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010525964768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.08744804
+  m_Height: 0.93289673
+  m_Direction: 0
+  m_Center: {x: -0.33, y: 0, z: 0}
+--- !u!136 &136000013550511764
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011278350870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.24426761
+  m_Height: 1.8430015
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!137 &137000011243557004
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
