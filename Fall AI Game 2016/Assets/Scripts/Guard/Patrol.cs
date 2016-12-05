@@ -15,67 +15,85 @@ public class Patrol : MonoBehaviour {
 	private bool detected;
 	private int timer;
 	private int maxTimer;
+	[SerializeField] private float radiusOfSatisfaction = .25f;
+	[SerializeField] private float maxSpeed = 10f;
 
 	//private Vector2 rotation;
-	private Vector3 direction;
+	private Vector3 moveDirection;
 	private Vector3 playerPosition;
 	private Vector3 pointPosition;
 	private float angle;
+	private int currPoint;
+	public Vector3 velocity;
 
 	void Awake () {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody> ();
+<<<<<<< HEAD
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+=======
+>>>>>>> 2b8fbf8dd0ac152e5a6354f704659a70dc398756
 	}
 
 
 	// Use this for initialization
 	void Start () {
 		maxTimer = timer = 25;
-		agent.autoBraking = false;
-		//GoToNextPoint ();
+		transform.position = points [0].position;
+		currPoint = 0;
 	}
 
 
 	
 	// Update is called once per frame
 	void Update () {
-		if (detected) {
+		//if (detected) {
 			//agent.Stop();
-			Pursue ();
+			//Pursue ();
 			//This is the 2d stuff
 			//angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
 			//Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 			//transform.rotation = Quaternion.Slerp (q, transform.rotation, rotationSpeed * Time.deltaTime);
 
-		}
-		else if (!detected) {
-			if (agent.remainingDistance < 0.5f)
-				GoToNextPoint ();
-		}
+		//}
+		//else if (!detected) {
+			//GoToNextPoint ();
+		//}
+		GoToNextPoint();
 	}
 
 	void Pursue() {
 		playerPosition = GameObject.FindWithTag ("Player").transform.position;
 		//print (playerPosition);
-		direction =  playerPosition - transform.position;
+		moveDirection =  playerPosition - transform.position;
 		//print ("Direction: " + direction);
-		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
+		Quaternion rotation = Quaternion.LookRotation (new Vector3(moveDirection.x, 0, moveDirection.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-		agent.destination = playerPosition;
-		agent.speed += 1;
+		rb.velocity = moveDirection;
+
+		//.speed += 1;
 	}
 
 	void GoToNextPoint() {
 		if (points.Length == 0)
 			return;
-		pointPosition = points [destPoint].position;
-		direction = pointPosition - transform.position;
-		Quaternion rotation = Quaternion.LookRotation (new Vector3(direction.x, 0, direction.z), Vector3.up);
+		pointPosition = points[destPoint].position;
+		moveDirection = pointPosition - transform.position;
+		velocity = rb.velocity;
+		Quaternion rotation = Quaternion.LookRotation (new Vector3(moveDirection.x, 0, moveDirection.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-		agent.destination = pointPosition;
+		if (moveDirection.magnitude > maxSpeed) {
+			moveDirection.Normalize ();
+			moveDirection *= maxSpeed;
+		}
+		rb.velocity = moveDirection;
+		// Radius of satisfaction
+		if (Vector3.Distance (transform.position, pointPosition) <= radiusOfSatisfaction) {
+			rb.velocity = Vector3.zero;
+			//currPoint++;
+			destPoint = (destPoint + 1) % points.Length;
+		}
 
-		destPoint = (destPoint + 1) % points.Length;
 	}
 
 	void FixedUpdate() {
