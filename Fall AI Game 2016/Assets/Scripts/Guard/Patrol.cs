@@ -26,6 +26,9 @@ public class Patrol : MonoBehaviour {
 	private int currPoint;
 	public Vector3 velocity;
 
+	RaycastHit[] hit;
+	Ray ray;
+
 	void Awake () {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody> ();
@@ -43,19 +46,12 @@ public class Patrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if (detected) {
-			//agent.Stop();
-			//Pursue ();
-			//This is the 2d stuff
-			//angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)+90;
-			//Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
-			//transform.rotation = Quaternion.Slerp (q, transform.rotation, rotationSpeed * Time.deltaTime);
-
-		//}
-		//else if (!detected) {
-			//GoToNextPoint ();
-		//}
-		GoToNextPoint();
+		moveDirection = pointPosition - transform.position;
+		// raycast work
+		ray = new Ray (transform.position, moveDirection);
+		hit = Physics.RaycastAll (ray, 10f);
+		Debug.DrawRay(transform.position, moveDirection, Color.green);
+		GoToNextPoint(moveDirection);
 	}
 
 	void Pursue() {
@@ -70,19 +66,18 @@ public class Patrol : MonoBehaviour {
 		//.speed += 1;
 	}
 
-	void GoToNextPoint() {
+	void GoToNextPoint(Vector3 dir) {
 		if (points.Length == 0)
 			return;
 		pointPosition = points[destPoint].position;
-		moveDirection = pointPosition - transform.position;
 		velocity = rb.velocity;
-		Quaternion rotation = Quaternion.LookRotation (new Vector3(moveDirection.x, 0, moveDirection.z), Vector3.up);
+		Quaternion rotation = Quaternion.LookRotation (new Vector3(dir.x, 0, dir.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-		if (moveDirection.magnitude > maxSpeed) {
-			moveDirection.Normalize ();
-			moveDirection *= maxSpeed;
+		if (dir.magnitude > maxSpeed) {
+			dir.Normalize ();
+			dir *= maxSpeed;
 		}
-		rb.velocity = moveDirection;
+		rb.velocity = dir;
 		// Radius of satisfaction
 		if (Vector3.Distance (transform.position, pointPosition) <= radiusOfSatisfaction) {
 			rb.velocity = Vector3.zero;
