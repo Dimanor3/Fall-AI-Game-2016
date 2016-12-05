@@ -96,6 +96,7 @@ public class PlayerMotor : MonoBehaviour {
 	/// Move player via AI.
 	/// </summary>
 	void kinematicMove () {
-		rb.velocity = aiMovement;
+		rb.MovePosition (rb.position + aiMovement * Time.fixedDeltaTime);
+		//rb.velocity = aiMovement;
 	}
 }
