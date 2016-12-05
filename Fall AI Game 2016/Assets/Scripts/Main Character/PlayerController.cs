@@ -107,69 +107,71 @@ public class PlayerController : MonoBehaviour {
         // Set hidden in motor
 		motor.Hidden = hidden;
 
-		if (!hidden && Input.GetAxis ("Look Ahead") <= 0) {
-            // Calculations for main characters movements
-            Vector3 moveHorizontal = transform.right * horizontalMovement;
-			Vector3 moveVertical = transform.forward * verticalMovement;
-			Vector3 movement = (moveHorizontal + moveVertical).normalized;
+		if (!hidden) {
+			if (Input.GetAxis ("Look Ahead") <= 0) {
+				// Calculations for main characters movements
+				Vector3 moveHorizontal = transform.right * horizontalMovement;
+				Vector3 moveVertical = transform.forward * verticalMovement;
+				Vector3 movement = (moveHorizontal + moveVertical).normalized;
 
-			if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
-				if (run == 0 && crawl == 0) {
+				if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
+					if (run == 0 && crawl == 0) {
+						if (!sfxMan.LightFootSteps.isPlaying) {
+							sfxMan.Running.Stop ();
+							sfxMan.Crawling.Stop ();
+							sfxMan.LightFootSteps.Play ();
+						}
+					} else if (crawl != 0) {
+						if (!sfxMan.Crawling.isPlaying) {
+							sfxMan.Running.Stop ();
+							sfxMan.LightFootSteps.Stop ();
+							sfxMan.Crawling.Play ();
+						}
+					} else {
+						if (!sfxMan.Running.isPlaying) {
+							sfxMan.LightFootSteps.Stop ();
+							sfxMan.Crawling.Stop ();
+							sfxMan.Running.Play ();
+						}
+					}
+				} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl == 0) {
 					if (!sfxMan.LightFootSteps.isPlaying) {
 						sfxMan.Running.Stop ();
 						sfxMan.Crawling.Stop ();
 						sfxMan.LightFootSteps.Play ();
 					}
-				} else if (crawl != 0) {
+				} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl != 0) {
 					if (!sfxMan.Crawling.isPlaying) {
 						sfxMan.Running.Stop ();
 						sfxMan.LightFootSteps.Stop ();
 						sfxMan.Crawling.Play ();
 					}
 				} else {
-					if (!sfxMan.Running.isPlaying) {
-						sfxMan.LightFootSteps.Stop ();
-						sfxMan.Crawling.Stop ();
-						sfxMan.Running.Play ();
-					}
-				}
-			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl == 0) {
-				if (!sfxMan.LightFootSteps.isPlaying) {
-					sfxMan.Running.Stop ();
 					sfxMan.Crawling.Stop ();
-					sfxMan.LightFootSteps.Play ();
-				}
-			} else if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG <= 0 && crawl != 0) {
-				if (!sfxMan.Crawling.isPlaying) {
-					sfxMan.Running.Stop ();
 					sfxMan.LightFootSteps.Stop ();
-					sfxMan.Crawling.Play ();
+					sfxMan.Running.Stop ();
 				}
-			} else {
-				sfxMan.Crawling.Stop ();
-				sfxMan.LightFootSteps.Stop ();
-				sfxMan.Running.Stop ();
+
+				if (run != 0 && (horizontalMovement != 0 || verticalMovement != 0) && crawl == 0) {
+					soundMaker.makeSound (soundLevelRunning, this.gameObject);
+				} else if (run == 0 && (horizontalMovement != 0 | verticalMovement != 0) && crawl != 0) {
+					soundMaker.makeSound (soundLevelCrawling, this.gameObject);
+				} else if (run == 0 && crawl == 0 && (horizontalMovement != 0 || verticalMovement != 0)) {
+					soundMaker.makeSound (soundLevelWalking, this.gameObject);
+				}
+
+				// Set player's movement speed
+				movement *= running (run, crawl);
+
+				// Use the player's stamina?
+				useStamina (run, horizontalMovement, verticalMovement);
+
+				// Regen the player's stamina?
+				regenStamina (run, crawl, horizontalMovement, verticalMovement);
+
+				// Move the player
+				motor.Movement = movement;
 			}
-
-			if (run != 0 && (horizontalMovement != 0 || verticalMovement != 0) && crawl == 0) {
-				soundMaker.makeSound (soundLevelRunning, this.gameObject);
-			} else if (run == 0 && (horizontalMovement != 0 | verticalMovement != 0) && crawl != 0) {
-				soundMaker.makeSound (soundLevelCrawling, this.gameObject);
-			} else if (run == 0 && crawl == 0 && (horizontalMovement != 0 || verticalMovement != 0)) {
-				soundMaker.makeSound (soundLevelWalking, this.gameObject);
-			}
-
-            // Set player's movement speed
-            movement *= running (run, crawl);
-
-            // Use the player's stamina?
-            useStamina (run, horizontalMovement, verticalMovement);
-
-            // Regen the player's stamina?
-            regenStamina (run, crawl, horizontalMovement, verticalMovement);
-
-            // Move the player
-			motor.Movement = movement;
         } else {
             // This is used to move the player into the
             // hidding spot
@@ -178,7 +180,10 @@ public class PlayerController : MonoBehaviour {
             if (moveToPos.magnitude > moveSpeed) {
                 moveToPos.Normalize ();
                 moveToPos *= moveSpeed;
-            }
+			}
+
+			// Regen the player's stamina?
+			regenStamina (run, crawl, horizontalMovement, verticalMovement);
 
 			motor.AiMovement = moveToPos;
         }

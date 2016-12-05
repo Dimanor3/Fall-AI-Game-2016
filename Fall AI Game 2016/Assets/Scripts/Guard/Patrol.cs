@@ -5,7 +5,7 @@ public class Patrol : MonoBehaviour {
 	
 	public Transform[] points;
 	private int destPoint = 0;
-	private NavMeshAgent agent;
+	private UnityEngine.AI.NavMeshAgent agent;
 	// Target's transform agent needs to move
 	[SerializeField] private Transform target;
 	// Agent's rigidbody
@@ -25,7 +25,7 @@ public class Patrol : MonoBehaviour {
 	void Awake () {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody> ();
-		agent = GetComponent<NavMeshAgent> ();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 	}
 
 
