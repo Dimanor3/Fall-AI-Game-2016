@@ -107,6 +107,16 @@ public class PlayerController : MonoBehaviour {
         // Set hidden in motor
 		motor.Hidden = hidden;
 
+		if (Input.GetKeyDown (KeyCode.Alpha1) && Input.GetKeyDown (KeyCode.Equals)) {
+			stamina.Cheat = true;
+			health.Cheat = true;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Minus)) {
+			stamina.Cheat = false;
+			health.Cheat = false;
+		}
+
 		if (!hidden) {
 			if (Input.GetAxis ("Look Ahead") <= 0) {
 				// Calculations for main characters movements
@@ -282,6 +292,12 @@ public class PlayerController : MonoBehaviour {
         if (col.CompareTag ("Hidding Spot")) {
             hiddingSpotLocation = col.gameObject.transform.position;
         }
+
+		if (col.CompareTag ("Heal")) {
+			health.heal (25);
+
+			col.gameObject.SetActive (false);
+		}
     }
 
 	/// <summary>

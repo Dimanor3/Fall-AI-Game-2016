@@ -16,6 +16,7 @@ TagManager:
   - Wall
   - Locked
   - Key
+  - Heal
   layers:
   - Default
   - TransparentFX

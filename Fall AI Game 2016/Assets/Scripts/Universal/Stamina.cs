@@ -6,17 +6,32 @@ public class Stamina : MonoBehaviour {
 	// Player's stamina
 	[SerializeField] private float stamina = 0f;
 	private float maxStamina = 0f;
-	[SerializeField] private float staminaLoss = 0f;		// Stamina lost per frame
+	[SerializeField] private float staminaLoss = 0f;	// Stamina lost per frame
 	[SerializeField] private float staminaRegen = 0f;	// Stamina regained per frame
+	private bool cheat = false;
 	
 	// Update is called once per frame
 	void Update () {
-		if(stamina >= maxStamina){
+		if (cheat) {
+			stamina = 999999;
+		}
+
+		if(stamina >= maxStamina && !cheat){
 			stamina = maxStamina;
 		}
 
-		if (stamina <= 0f) {
+		if (stamina <= 0f && !cheat) {
 			stamina = 0f;
+		}
+	}
+
+	/// <summary>
+	/// Sets a value indicating whether to cheat or not.
+	/// </summary>
+	/// <value><c>true</c> if cheat; otherwise, <c>false</c>.</value>
+	public bool Cheat {
+		set {
+			cheat = value;
 		}
 	}
 
