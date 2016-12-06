@@ -14,6 +14,8 @@ TagManager:
   - NotCredits
   - Sounds
   - Wall
+  - Locked
+  - Key
   layers:
   - Default
   - TransparentFX
