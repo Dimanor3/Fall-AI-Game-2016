@@ -12,6 +12,8 @@ public class lockedDoor : MonoBehaviour {
 	private float soundLevel;							// Amount of sound made by door
 	private bool locked;								// Is the door locked?
 	[SerializeField] private GameObject doorLocked;
+	private TextMesh doorLockedTextMesh;
+	private bool fadeIn, fadeOut, showing;
 
 	// Let's us know whether the door is open or not
 	[SerializeField] private bool open;
@@ -52,11 +54,15 @@ public class lockedDoor : MonoBehaviour {
 		use = false;
 		infrontOf = false;
 		locked = true;
+		fadeIn = false;
+		fadeOut = false;
+		showing = false;
 
 		// Initialize both the default and open rotations
 		defaultRot = transform.rotation;
 
 		doorLocked.SetActive (false);
+		doorLockedTextMesh = doorLocked.GetComponent<TextMesh> ();
 	}
 
 	// Update is called once per frame
@@ -75,7 +81,7 @@ public class lockedDoor : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp (transform.rotation, defaultRot, Time.deltaTime * smooth);
 		}
 
-		if (useValue != 0 && !use && enter && locked) {
+		if (useValue != 0 && !use && enter && locked && !showing) {
 			StartCoroutine (showText ());
 		}
 
@@ -121,12 +127,38 @@ public class lockedDoor : MonoBehaviour {
 		}
 	}
 
+	void FixedUpdate () {
+		if (fadeIn && doorLockedTextMesh.color.a < 1 && !fadeOut) {
+			doorLockedTextMesh.color = new Color (doorLockedTextMesh.color.r, doorLockedTextMesh.color.g, doorLockedTextMesh.color.b, doorLockedTextMesh.color.a + .3f * Time.deltaTime);
+		} else {
+			fadeIn = false;
+		}
+
+		if (fadeOut && doorLockedTextMesh.color.a > 0 && !fadeIn) {
+			doorLockedTextMesh.color = new Color (doorLockedTextMesh.color.r, doorLockedTextMesh.color.g, doorLockedTextMesh.color.b, doorLockedTextMesh.color.a - .3f * Time.deltaTime);
+		} else {
+			fadeOut = false;
+		}
+	}
+
 	IEnumerator showText () {
+		showing = true;
+
+		doorLockedTextMesh.color = new Color (doorLockedTextMesh.color.r, doorLockedTextMesh.color.g, doorLockedTextMesh.color.b, 0f);
+
 		doorLocked.SetActive (true);
+
+		fadeIn = true;
 
 		yield return new WaitForSeconds (5);
 
+		fadeOut = true;
+
+		yield return new WaitForSeconds (3);
+
 		doorLocked.SetActive (false);
+
+		showing = false;
 	}
 
 	// Is the player in the vicinity of the door?
