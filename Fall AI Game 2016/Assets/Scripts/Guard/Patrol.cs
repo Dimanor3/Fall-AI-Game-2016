@@ -6,6 +6,7 @@ public class Patrol : MonoBehaviour {
 	Animator anim;
 	public Transform[] points;
 	private int destPoint = 0;
+	private UnityEngine.AI.NavMeshAgent agent;
 	// Target's transform agent needs to move
 	[SerializeField] private Transform target;
 	// Agent's rigidbody
@@ -35,14 +36,15 @@ public class Patrol : MonoBehaviour {
 	void Awake () {
 		// Initialize agents rigidbody
 		rb = GetComponent<Rigidbody> ();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 	}
 
 
 	// Use this for initialization
 	void Start () {
-		transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
-		anim = GetComponent<Animator> ();
-		anim.SetFloat ("Walk", 0.2f);
+		//transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
+		//anim = GetComponent<Animator> ();
+		//anim.SetFloat ("Walk", 0.2f);
 		maxTimer = timer = 25;
 		transform.position = points [0].position;
 		currPoint = 0;
@@ -52,16 +54,20 @@ public class Patrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
+		//transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
 		moveDirection = pointPosition - transform.position;
 		// raycast work
 		//ray = new Ray (transform.position, moveDirection);
 		//hit = Physics.RaycastAll (ray, 10f);
 		//Debug.DrawRay(transform.position, moveDirection, Color.green);
-		GoToNextPoint(moveDirection);
+		if (detected) {
+			Pursue ();
+		} else {
+			GoToNextPoint (moveDirection);
+		}
 	}
 
-	void Detection() {
+	/*void Detection() {
 		RaycastHit hit;
 		var angle = transform.rotation * startingAngle;
 		var direction = angle * Vector3.forward;
@@ -80,7 +86,7 @@ public class Patrol : MonoBehaviour {
 			}
 			direction = stepAngle * direction;
 		}
-	}
+	}*/
 
 	void Pursue() {
 		playerPosition = GameObject.FindWithTag ("Player").transform.position;
@@ -89,8 +95,11 @@ public class Patrol : MonoBehaviour {
 		//print ("Direction: " + direction);
 		Quaternion rotation = Quaternion.LookRotation (new Vector3(moveDirection.x, 0, moveDirection.z), Vector3.up);
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+		agent.SetDestination (playerPosition);
 		rb.velocity = moveDirection;
-
+		if (!detected) {
+			GoToNextPoint (moveDirection);
+		}
 		//.speed += 1;
 	}
 		
@@ -105,7 +114,7 @@ public class Patrol : MonoBehaviour {
 		if (dir.magnitude > maxSpeed) {
 			dir.Normalize ();
 			dir *= maxSpeed;
-			anim.SetFloat ("Walk", 0.2f);
+			//anim.SetFloat ("Walk", 0.2f);
 		}
 		rb.velocity = dir;
 		// Radius of satisfaction
@@ -114,6 +123,12 @@ public class Patrol : MonoBehaviour {
 			//currPoint++;
 			destPoint = (destPoint + 1) % points.Length;
 		}
+
+	}
+
+	public void outsideMovement(Vector3 pos) {
+		agent.Stop ();
+		agent.destination = pos;
 
 	}
 
