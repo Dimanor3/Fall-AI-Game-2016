@@ -48322,18 +48322,6 @@ MonoBehaviour:
   playerWinStateTextMesh: {fileID: 1286824592}
   goal: 0
   soundMaker: {fileID: 0}
---- !u!114 &1581057259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1581057253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b086fcbe13ca6499e3c995b7639352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {x: 0, y: 0, z: 0}
 --- !u!114 &1581057260
 MonoBehaviour:
   m_ObjectHideFlags: 0
