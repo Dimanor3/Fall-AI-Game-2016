@@ -31504,7 +31504,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 100
+  m_FontSize: 97
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 14683c8654d28164fbb1f1d237201203, type: 3}
@@ -48313,6 +48313,8 @@ MonoBehaviour:
   playerStamina: 0
   useStaminaSpeed: 0
   staminaRegen: 0
+  horizontalMovement: 0
+  verticalMovement: 0
   hp: 0
   hidden: 0
   hiddingSpotLocation: {x: 0, y: 0, z: 0}
