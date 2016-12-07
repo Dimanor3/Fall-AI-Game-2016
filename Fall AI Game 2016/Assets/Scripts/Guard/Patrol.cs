@@ -25,6 +25,8 @@ public class Patrol : MonoBehaviour {
 	private float angle;
 	private int currPoint;
 	public Vector3 velocity;
+	Quaternion startingAngle = Quaternion.AngleAxis(-60, Vector3.up);
+	Quaternion stepAngle = Quaternion.AngleAxis(5, Vector3.up);
 
 	RaycastHit[] hit;
 	Ray ray;
@@ -50,10 +52,31 @@ public class Patrol : MonoBehaviour {
 	void Update () {
 		moveDirection = pointPosition - transform.position;
 		// raycast work
-		ray = new Ray (transform.position, moveDirection);
-		hit = Physics.RaycastAll (ray, 10f);
-		Debug.DrawRay(transform.position, moveDirection, Color.green);
+		//ray = new Ray (transform.position, moveDirection);
+		//hit = Physics.RaycastAll (ray, 10f);
+		//Debug.DrawRay(transform.position, moveDirection, Color.green);
 		GoToNextPoint(moveDirection);
+	}
+
+	void Detection() {
+		RaycastHit hit;
+		var angle = transform.rotation * startingAngle;
+		var direction = angle * Vector3.forward;
+		var pos = transform.position;
+		for(var i = 0; i < 24; i++)
+		{
+			if(Physics.Raycast(pos, direction, out hit, 100))
+			{
+				Debug.DrawRay(transform.position, direction, Color.green);
+				var enemy = hit.collider.CompareTag("Player");
+				if (enemy) {
+					print ("enemy seen");
+				} else {
+					print ("sight clear");
+				}
+			}
+			direction = stepAngle * direction;
+		}
 	}
 
 	void Pursue() {
@@ -67,6 +90,7 @@ public class Patrol : MonoBehaviour {
 
 		//.speed += 1;
 	}
+		
 
 	void GoToNextPoint(Vector3 dir) {
 		if (points.Length == 0)

@@ -292,10 +292,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011917516248}
   - component: {fileID: 95000012053943106}
-  - component: {fileID: 114000012687759932}
   - component: {fileID: 114000010808705002}
   - component: {fileID: 136000013550511764}
-  - component: {fileID: 136000011446760298}
   - component: {fileID: 54000010157133230}
   m_Layer: 0
   m_Name: Guard
@@ -372,6 +370,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010247543568}
+  - component: {fileID: 60781527102005960}
   m_Layer: 0
   m_Name: Geo
   m_TagString: Untagged
@@ -1220,15 +1219,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011480144334}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.96799, z: 0.000043233}
+  m_LocalScale: {x: 0.94710964, y: 1.0134826, z: 0.7116027}
   m_Children:
   - {fileID: 4000010716605842}
   - {fileID: 4000012525667786}
   m_Father: {fileID: 4000011917516248}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4000010249232498
 Transform:
   m_ObjectHideFlags: 1
@@ -2205,6 +2204,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
+--- !u!60 &60781527102005960
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011480144334}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 16}
+      - {x: 3, y: 15}
+      - {x: 0.5877852, y: -0.80901706}
+      - {x: -0.58778536, y: -0.80901694}
+      - {x: -3, y: 15}
 --- !u!95 &95000012053943106
 Animator:
   serializedVersion: 3
@@ -2258,20 +2276,6 @@ MonoBehaviour:
   sfxMan: {fileID: 0}
   bullet: {fileID: 1000010249606814, guid: 60724469cb779ab47aa507ebcda4282f, type: 2}
   soundMaker: {fileID: 0}
---- !u!114 &114000012687759932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011278350870}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ac77b002e34444fa31e5a5ff6b0747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  rb: {fileID: 0}
-  rotationSpeed: 0
 --- !u!136 &136000010474212120
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2285,19 +2289,6 @@ CapsuleCollider:
   m_Height: 0.93289673
   m_Direction: 0
   m_Center: {x: 0.33, y: 0, z: 0}
---- !u!136 &136000011446760298
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011278350870}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 3.3
-  m_Height: 10.424975
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.91, z: 4.74}
 --- !u!136 &136000012601147488
 CapsuleCollider:
   m_ObjectHideFlags: 1
