@@ -6,6 +6,7 @@ public class PlayerMotor : MonoBehaviour {
 	// Access to the main characters rigidbody
 	private Rigidbody rb;
 
+
 	// Movement stuff
 	[SerializeField] private Vector3 movement;		// Move the player
 	private Vector3 aiMovement;		// Move the player via AI
@@ -88,6 +89,7 @@ public class PlayerMotor : MonoBehaviour {
 	void movePlayer () {
 		if (movement != Vector3.zero) {
 			rb.MovePosition (rb.position + movement * Time.fixedDeltaTime);
+
 			//rb.AddForce (movement);// * Time.deltaTime);
 		}
 	}

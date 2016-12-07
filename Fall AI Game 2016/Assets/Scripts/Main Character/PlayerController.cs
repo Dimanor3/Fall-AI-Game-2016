@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] private StatusBar healthBar;
 	[SerializeField] private StatusBar staminaBar;
 
+	//animator
+	Animator anim;
+
 	// Player movement
 	private PlayerMotor motor;                                              // Used to move the player
 	[SerializeField] private float crawlSpeed, moveSpeed, runSpeed;
@@ -63,7 +66,8 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Initialize all required variables
-        moveSpeed = 28f;
+		anim = GetComponent<Animator>();
+		moveSpeed = 28f;
         runSpeed = 70f;
 		crawlSpeed = 14f;
         playerStamina = 1000f;
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour {
 				Vector3 moveHorizontal = transform.right * horizontalMovement;
 				Vector3 moveVertical = transform.forward * verticalMovement;
 				Vector3 movement = (moveHorizontal + moveVertical).normalized;
-
+				Debug.DrawLine (transform.position, movement); 
 				if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
 					if (run == 0 && crawl == 0) {
 						if (!sfxMan.LightFootSteps.isPlaying) {
