@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Patrol : MonoBehaviour {
-	
+
+	Animator anim;
 	public Transform[] points;
 	private int destPoint = 0;
 	// Target's transform agent needs to move
@@ -38,6 +39,8 @@ public class Patrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+		anim.SetFloat ("Walk", 0.2f);
 		maxTimer = timer = 25;
 		transform.position = points [0].position;
 		currPoint = 0;
@@ -99,6 +102,7 @@ public class Patrol : MonoBehaviour {
 		if (dir.magnitude > maxSpeed) {
 			dir.Normalize ();
 			dir *= maxSpeed;
+			anim.SetFloat ("Walk", 0.2f);
 		}
 		rb.velocity = dir;
 		// Radius of satisfaction

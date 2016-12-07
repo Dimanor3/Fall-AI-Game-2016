@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour {
     private Stamina stamina;
     [SerializeField] private float playerStamina, useStaminaSpeed, staminaRegen;
 
+	[SerializeField] private float horizontalMovement;
+	[SerializeField] private float verticalMovement;
+
     // Player health
     private Health health;
     [SerializeField] private int hp;
@@ -102,8 +105,16 @@ public class PlayerController : MonoBehaviour {
 		crawl = Input.GetAxis ("Crawl");
 
 		// Main Character left right up and down movement
-		float horizontalMovement = Input.GetAxis ("Horizontal");
-		float verticalMovement = Input.GetAxis ("Vertical");
+		horizontalMovement = Input.GetAxis ("Horizontal");
+		verticalMovement = Input.GetAxis ("Vertical");
+		Debug.Log (horizontalMovement);
+
+		//sets idle animation
+		if (horizontalMovement == 0 && verticalMovement == 0) {
+			anim.SetFloat ("Walk", 0.0f);
+		} else if(horizontalMovement < 0 || verticalMovement < 0 || horizontalMovement > 0 || verticalMovement > 0) {
+			anim.SetFloat ("Walk", 0.2f);
+		}
 
 		// Check to see if the player is hidding or not
 		hidden = hidding.getHidding ();
@@ -127,7 +138,6 @@ public class PlayerController : MonoBehaviour {
 				Vector3 moveHorizontal = transform.right * horizontalMovement;
 				Vector3 moveVertical = transform.forward * verticalMovement;
 				Vector3 movement = (moveHorizontal + moveVertical).normalized;
-				Debug.DrawLine (transform.position, movement); 
 				if ((horizontalMovement != 0 || verticalMovement != 0) && stamina.StaminaSG > 0) {
 					if (run == 0 && crawl == 0) {
 						if (!sfxMan.LightFootSteps.isPlaying) {
@@ -228,10 +238,12 @@ public class PlayerController : MonoBehaviour {
 	/// <returns>Returns the correct movement multiplyer.</returns>
 	float running (float run, float crawl) {
         if (run != 0 && stamina.StaminaSG > 0) {
+			anim.SetFloat ("Sprint", 0.2f);
             return runSpeed;
 		} else if (crawl != 0) {
 			return crawlSpeed;
 		} else {
+			anim.SetFloat ("Sprint", 0.1f);
             return moveSpeed;
         }
     }
