@@ -12,6 +12,7 @@ public class Patrol : MonoBehaviour {
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private float rotationSpeed;
 	//[SerializeField] private float rotationTimer;
+	//public Vector3 newTransform;
 	private bool detected;
 	private int timer;
 	private int maxTimer;
@@ -39,6 +40,7 @@ public class Patrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
 		anim = GetComponent<Animator> ();
 		anim.SetFloat ("Walk", 0.2f);
 		maxTimer = timer = 25;
@@ -50,6 +52,7 @@ public class Patrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.position = new Vector3 (transform.position.x, -5, transform.position.z);
 		moveDirection = pointPosition - transform.position;
 		// raycast work
 		//ray = new Ray (transform.position, moveDirection);
