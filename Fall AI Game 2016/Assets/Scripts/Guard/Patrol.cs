@@ -97,9 +97,9 @@ public class Patrol : MonoBehaviour {
 		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 		agent.SetDestination (playerPosition);
 		rb.velocity = moveDirection;
-		if (!detected) {
-			GoToNextPoint (moveDirection);
-		}
+		//if (!detected) {
+			//GoToNextPoint (moveDirection);
+		//}
 		//.speed += 1;
 	}
 		

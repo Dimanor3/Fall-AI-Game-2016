@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	[SerializeField] private float cameraSpeed;  	// Sets the maximum speed the camera can move.
-	[SerializeField] private float yCap, xCap;		// Used to restrict how far out the camera can move.
+	[SerializeField] private float zCap, xCap;		// Used to restrict how far out the camera can move.
 
     private Vector3 newCameraPosition;   			// Used to determine the new.
 
@@ -26,8 +26,8 @@ public class CameraController : MonoBehaviour {
         cameraSpeed = 1f;
 
 		// Initialize min and max movement
-		yCap = 43f;
-		xCap = 75f;
+		zCap = 25f;
+		xCap = 25f;
 	}
 	
 	// Update is called once per frame.
@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour {
 
 			transform.Translate(move * Time.deltaTime, Space.Self);
 
-			transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 0f, Mathf.Clamp (transform.localPosition.z, -yCap, yCap));
+			transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 0f, Mathf.Clamp (transform.localPosition.z, -zCap, zCap));
 
 
 			/*
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour {
             transform.Translate (dir * cameraSpeed * Time.deltaTime);
 
             // Clamp the position so that it doesn't move too far out.
-            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 45f, Mathf.Clamp (transform.localPosition.z, -yCap, yCap));
+            transform.localPosition = new Vector3 (Mathf.Clamp (transform.localPosition.x, -xCap, xCap), 45f, Mathf.Clamp (transform.localPosition.z, -zCap, zCap));
 			*/
         }
 

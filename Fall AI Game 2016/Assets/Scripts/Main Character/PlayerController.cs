@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	private PlayerMotor motor;                                              // Used to move the player
 	[SerializeField] private float crawlSpeed, moveSpeed, runSpeed;
 	[SerializeField] private float run, crawl;												// Is the player running? Is the player crawling?
+	[SerializeField] private float lookAhead;
 
     // Player stamina
     private Stamina stamina;
@@ -104,6 +105,8 @@ public class PlayerController : MonoBehaviour {
 
 		crawl = Input.GetAxis ("Crawl");
 
+		lookAhead = Input.GetAxis ("Look Ahead");
+
 		// Main Character left right up and down movement
 		horizontalMovement = Input.GetAxis ("Horizontal");
 		verticalMovement = Input.GetAxis ("Vertical");
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (!hidden) {
-			if (Input.GetAxis ("Look Ahead") <= 0) {
+			if (lookAhead <= 0) {
 				// Calculations for main characters movements
 				Vector3 moveHorizontal = transform.right * horizontalMovement;
 				Vector3 moveVertical = transform.forward * verticalMovement;
